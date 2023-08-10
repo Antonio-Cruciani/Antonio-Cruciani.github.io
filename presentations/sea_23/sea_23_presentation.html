@@ -1,0 +1,679 @@
+<!DOCTYPE html>
+	<html class="sl-root decks export offline loaded">
+	<head>
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover, minimal-ui">
+		<meta charset="utf-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+		<meta name="mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-capable" content="yes">
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+		<link rel="manifest" href='data:application/manifest+json,{"display": "standalone", "name": "SEA2023"}' />
+		<title>SEA2023</title>
+
+
+		<link rel="stylesheet" type="text/css" href="lib/offline-v2.css">
+
+
+
+	</head>
+	<body class="reveal-viewport theme-font-overpass2 theme-color-white-blue">
+		<div class="reveal">
+			<div class="slides">
+				<section data-background-color="rgb(255, 255, 255)" data-id="4c3058ec6f5ab96edb554b7c9d69f72f"><div class="sl-block" data-block-type="text" style="width: 876px; left: 43px; top: 57px; height: auto;" data-block-id="16cdd72f242fc8100e212e03f3171f25"><div class="sl-block-content" data-placeholder-tag="h1" style="z-index: 10; font-size: 160%; padding: 20px; line-height: 1.04;" data-has-line-height="" data-placeholder-text="Text"><p><span style="font-size:1.0em"><strong>Proxying Betweenness Centrality Rankings in Temporal Networks</strong></span></p></div></div>
+
+<div class="sl-block" data-block-type="text" style="width: 765px; left: 178.5px; top: 190px; height: auto;" data-name="text-d18e72" data-block-id="ca46ccba5aab257add8749d58f61b9bf"><div class="sl-block-content" data-placeholder-tag="p" style="z-index: 11; text-align: center; color: rgb(0, 0, 0); font-size: 120%; padding: 20px;" data-placeholder-text="Text">
+<p style="text-align:left">Ruben Becker                 Pierluigi Crescenzi<span style="color:#000000"> </span></p>
+
+<p style="text-align:left"><span style="color:#000000"><strong>Antonio Cruciani</strong></span>         Bojana Kodric</p>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 62px; top: 190px;" data-name="line-1fbba7" data-block-id="8adc687d56b39efcc623b673d72c7e44"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="857" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 12;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="857" height="1" viewbox="0 0 857 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="857" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="857" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 227px; height: 227px; left: 43px; top: 460px; min-width: 1px; min-height: 1px;" data-name="image-7d636c" data-block-id="7b9fb7a5f0636947deb1f6d33f90af10"><div class="sl-block-content" style="z-index: 13;"><img class="" data-natural-width="1350" data-natural-height="1350" data-lazy-loaded="" data-src="minimal-4205fa/264552bed719b863a88236dee7affb26.jpg"></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 410.5px; left: 285.25px; top: 326px;" data-name="text-c1982c" data-block-id="b814984bf37e2e2cc38965948720022e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;"><p><span style="font-size:0.7em">{pierluigi.crescenzi,antonio.cruciani}@gssi.it</span></p></div></div>
+<div class="sl-block" data-block-type="image" style="width: 189.893px; height: 240.31px; left: 729.107px; top: 446.69px; min-width: 1px; min-height: 1px;" data-name="image-0d7174" data-block-id="a71db2c3373b86366c3787620d988da0"><div class="sl-block-content" style="z-index: 16;"><img class="" data-natural-width="516" data-natural-height="653" data-lazy-loaded="" data-src="minimal-4205fa/b44398693bd920c3c1d3834a204e57ca.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 434.5px; left: 268.25px; top: 362px;" data-block-id="c526d53a7f5c03cbeba6bef58fd6233d" data-name="text-7aa5a7"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;"><p><span style="font-size:0.7em">{rubensimon.becker,bojana.kodric}@unive.it</span></p></div></div></section><section data-id="d9815566d89776a3e76ea75d5089d541"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 24px; top: 69px;" data-name="line-1fbba7" data-block-id="bb205498dbc31a826c26d8fb5cc307b7"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="253" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="253" height="1" viewbox="0 0 253 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="253" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="253" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 293px; left: 0px; top: 20px;" data-name="text-64cb14" data-block-id="c2020579c7d25516fc9a8cd601866572"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><strong>Temporal Networks</strong></p></div></div>
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 914.124px; left: 24px; top: 89px;" data-name="text-017e17" data-block-id="cff3903af5d758152e4aefe8efa1f12e"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p style="text-align: left;">Graphs are ubiquitous and many of them share a common feature:</p>
+
+<p><strong>they evolve over time</strong></p>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 914px; left: 34px; top: 174px;" data-name="text-be47b0" data-block-id="72527aace174cac6e614564a14c2b552"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="0">
+<p style="text-align:left">A<em> </em>directed <em>temporal graph</em> is an ordered triple \(\mathcal{G} = ( V,\mathcal{A},T)\), where:</p>
+
+<ul>
+	<li>\(V\) is the set of nodes</li>
+	<li>\(\mathcal{A} = \{(u,v,t): u,v\in V\land t\in [T] \}\) is the set of temporal arcs</li>
+	<li>\(T = \{1,2,\dots, |T|\}\) is a set of time steps</li>
+</ul>
+
+<p> </p>
+</div></div>
+<div class="sl-block" data-block-type="image" style="width: 247px; height: 247px; left: 91.5px; top: 428px; min-width: 1px; min-height: 1px;" data-name="image-a4a6f4" data-block-id="981fddce11421ea49927350f2f094822"><div class="sl-block-content fragment" style="z-index: 16;" data-fragment-index="0"><img class="" data-natural-width="633" data-natural-height="633" data-lazy-loaded="" data-src="minimal-4205fa/15b821fd8cd19cd2c61e86b973bbe99f.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 248px; height: 248px; left: 654px; top: 418px; min-width: 1px; min-height: 1px;" data-name="image-31cdb9" data-block-id="6d21f396ea7ce5fb00a1abc47461d674"><div class="sl-block-content fragment" style="z-index: 14;" data-fragment-index="0"><img class="" data-natural-width="633" data-natural-height="633" data-lazy-loaded="" data-src="minimal-4205fa/2f018dcaf1443355a30a67d10d192fa7.png"></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 383px; top: 519px;" data-name="line-079e80" data-block-id="338945837c5107f5f65478a4657a6b3a"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="216" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="line-arrow" style="z-index: 15;" data-line-width="7px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="216" height="1" viewbox="0 0 216 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="211.25" y2="0.5"></line><line class="line-element" stroke="#000000" stroke-width="7" x1="0.5" y1="0.5" x2="211.25" y2="0.5"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="7" transform="translate(210.75,0) rotate(90)" d="M 15.75 15.75 L 0 0 L -15.75 15.75"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 229px; left: 109.5px; top: 382px;" data-name="text-fe8dce" data-block-id="bb232a9254e4d5aeb0438303f5a58200"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="0"><p>Temporal Graph</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 229px; left: 673px; top: 373px;" data-name="text-6edcdc" data-block-id="2605ca04a2e90e3e041559d74eddddea"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" data-fragment-index="0"><p>Underlying Graph</p></div></div></section><section data-id="3950c32f64716c0d74954c72c388620f"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 35px; top: 66.5px;" data-name="line-1fbba7" data-block-id="06b8a6b4392026f26a48e430d12df782"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="213" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="213" height="1" viewbox="0 0 213 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="213" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="213" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 248px; left: 35px; top: 21px;" data-name="text-64cb14" data-block-id="d1cadce13adb4cd856d1729956a1f456"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align: left;"><strong>Temporal Paths</strong></p></div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 914px; left: 47px; top: 88px;" data-block-id="b2dbef285d653541957adcc62dd3b3e2" data-name="text-2ad87b"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;">
+<p style="text-align:left">A temporal path is a sequence \(P = \langle (u_1,v_1,t_1),(u_2,v_2,t_2),\dots ,(u_k,v_k,t_k)\rangle\) of temporal arcs in which \(t_i &lt; t_{i+1} \) and \(v_i = u_{i+1}\) for all \(i\in [k-1]\) and each node in \(V\) is visited at most once.</p>
+
+<p> </p>
+</div></div>
+
+<div class="sl-block" data-block-type="image" style="width: 517.969px; height: 342px; left: 47px; top: 254px; min-width: 1px; min-height: 1px;" data-name="image-f5c5f4" data-block-id="4f9a6441afc1eaad9f11603ea394765c"><div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="1"><img class="" data-natural-width="886" data-natural-height="585" data-lazy-loaded="" data-src="minimal-4205fa/3dea68d2e63424bdc04fb6a0ee071513.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 234px; left: 595px; top: 334.5px;" data-name="text-906c58" data-block-id="4903ee1a5e888c60aac9025042e44978"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="1"><p>\(P = \langle s \rightarrow h\rightarrow z \rangle \)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 173px; left: 539px; top: 284px;" data-name="text-a67660" data-block-id="6eec719241d0b2a3c8cf05d919a0a182"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="1"><p><strong>Shortest</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 173px; left: 550px; top: 394.5px;" data-name="text-a623d6" data-block-id="12e37f3fda3b798b14ca8ee16548a8ff"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="2"><p><strong>Foremost</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 173px; left: 539px; top: 513px;" data-name="text-1a5721" data-block-id="644db34d127c951006bbe9ac6e661c35"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="3"><p><strong>Fastest</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 562px; left: 493px; top: 449px;" data-name="text-c03ad9" data-block-id="ea6fb0a214fd767d2f3adb94455041a4"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" data-fragment-index="2"><p>\(P = \langle s \rightarrow u \rightarrow v \rightarrow  w \rightarrow z \rangle \)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 370px; left: 550px; top: 568px;" data-name="text-622c3c" data-block-id="35851060967205cbb50eccb0f63b7676"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;" data-fragment-index="3"><p>\(P = \langle s \rightarrow x\rightarrow y\rightarrow z \rangle \)</p></div></div>
+
+<div class="sl-block" data-block-type="image" style="width: 570.402px; height: 222.36px; left: 218.799px; top: 472px; min-width: 1px; min-height: 1px;" data-name="image-001faf" data-block-id="5c81ff0c069d42b25e5cb62fcf5ea14e"><div class="sl-block-content fragment current-visible" style="z-index: 20;" data-fragment-index="0"><img class="" data-natural-width="708" data-natural-height="276" data-lazy-loaded="" data-src="minimal-4205fa/54b8863729706ebeb0922a43f0207c2f.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 570.807px; height: 222.36px; left: 218.799px; top: 215.82px; min-width: 1px; min-height: 1px;" data-name="image-9fb78d" data-block-id="3c70b17155ee78197c70f567175db903"><div class="sl-block-content fragment fade-out" style="z-index: 22;" data-fragment-index="1"><img class="" data-natural-width="919" data-natural-height="358" data-lazy-loaded="" data-src="minimal-4205fa/1ce9ed696bad3ff691a192766f1cb288.png"></div></div></section><section data-id="024caf4495a66478d4aa3f13c479117d"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 35px; top: 67px;" data-name="line-1fbba7" data-block-id="6b03d6fbb406bfc356071ee5e36468a1"><div class="sl-block-content" data-line-x1="0" data-line-y1="2" data-line-x2="619" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="619" height="2" viewbox="0 0 619 2"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="2" x2="619" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="2" x2="619" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 655px; left: 35px; top: 21px;" data-name="text-64cb14" data-block-id="16483a8d82b6bd15817e5c37c6c90628"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11; text-align: left;"><p><strong>Temporal Betweenness [Bu\(\text{\ss}\) et al (KDD 2020)]</strong></p></div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 914px; left: 46px; top: 87.5px;" data-name="text-2ad87b" data-block-id="fc6c8f76088d467d612368e5ad78ce92"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;">
+<p style="text-align:left">The temporal betweeness centrality of each node \(v\in V\) is defined as</p>
+
+<p style="text-align:left">$$tb(v) = \sum_{\substack{s, z\in V\\ s\neq z\neq v}} \frac{\sigma^{(\star)}_{s,z}(v)}{\sigma^{(\star)}_{s,z}}$$</p>
+
+<ul>
+	<li style="text-align:left">\(\sigma^{(\star)}_{s,z}(v)\) is the number of \((\star)\)-temporal paths between \(s\) and \(z\) passing through \(v\)</li>
+	<li style="text-align:left">\(\sigma^{(\star)}_{s,z}\) overall number of \((\star\))-temporal paths between \(s\) and \(z\)</li>
+	<li style="text-align:left">\((\star)\) can be :</li>
+</ul>
+</div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 453.5px; left: 19.5px; top: 441px;" data-name="text-905be6" data-block-id="415196dc28764b56c291a46528267da6"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="0">
+<p style="text-align:left"> </p>
+
+<ul>
+	<li><strong>Shortest</strong></li>
+	<li><strong>Shortest -Foremost</strong></li>
+	<li><strong>Prefix-Foremost</strong></li>
+	<li><strong>Foremost</strong></li>
+	<li><strong>Fastest</strong></li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 322px; top: 649px;" data-name="line-3ac727" data-block-id="3a4941d11a7ea5da4941861a18ce5b08"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="25" data-line-x2="165" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 15;" data-line-width="4px" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="165" height="25" viewbox="0 0 165 25"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="2.9661465126743" y1="24.550583861716014" x2="165" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="4" x1="2.9661465126743" y1="24.550583861716014" x2="165" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#ff0000" stroke-width="4" transform="translate(2.9661465126743,24.550583861716014) rotate(81.384)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 125px; left: 499px; top: 631px;" data-name="text-c0e0cf" data-block-id="6a17a8cabad37715ec17ca3e27ef7015"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="2"><p><strong>#P-Hard</strong></p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 322px; top: 637px;" data-name="line-8903fa" data-block-id="0950686c968d55de0eaf6bae76fc6861"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="165" data-line-y2="12" data-line-color="#ff0000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 17;" data-line-width="4px" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="165" height="12" viewbox="0 0 165 12"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="2.9920974508763813" y1="0.2176070873364641" x2="165" y2="12"></line><line class="line-element" stroke="#ff0000" stroke-width="4" x1="2.9920974508763813" y1="0.2176070873364641" x2="165" y2="12"></line><path style="fill: rgba(0,0,0,0);" stroke="#ff0000" stroke-width="4" transform="translate(2.9920974508763813,0.2176070873364641) rotate(94.16)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 278px; top: 507px;" data-name="line-cf0526" data-block-id="9f8f26d8533c4a1b58c363661e29207e"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="202" data-line-y2="12" data-line-color="#00ff00" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 18;" data-line-width="4px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="202" height="12" viewbox="0 0 202 12"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="2.9947203713484023" y1="0.1779041804761427" x2="202" y2="12"></line><line class="line-element" stroke="#00ff00" stroke-width="4" x1="2.9947203713484023" y1="0.1779041804761427" x2="202" y2="12"></line><path style="fill: rgba(0,0,0,0);" stroke="#00ff00" stroke-width="4" transform="translate(2.9947203713484023,0.1779041804761427) rotate(93.4)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 125px; left: 504px; top: 496px;" data-name="text-3dd143" data-block-id="87f01034b6b9acfafae6bc4bd8a56985"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;" data-fragment-index="1"><p><strong>\(\mathcal{O}(|V|^3|T|^2)\)</strong></p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 403.5px; top: 594.5px;" data-name="line-5a951a" data-block-id="969d6e43eeea0a0c8c859b93994c8e48"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="83.5" data-line-y2="0" data-line-color="#00ff00" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 20;" data-line-width="4px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="83.5" height="1" viewbox="0 0 83.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="3" y1="0" x2="83.5" y2="0"></line><line class="line-element" stroke="#00ff00" stroke-width="4" x1="3" y1="0" x2="83.5" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#00ff00" stroke-width="4" transform="translate(3,0) rotate(90)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 403.5px; top: 519px;" data-name="line-26509e" data-block-id="20da97819aba40508ac572a0fdd4b20a"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="34" data-line-x2="76.5" data-line-y2="0" data-line-color="#00ff00" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 21;" data-line-width="4px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="76.5" height="34" viewbox="0 0 76.5 34"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="2.7414346458607715" y1="32.781584601839654" x2="76.5" y2="0"></line><line class="line-element" stroke="#00ff00" stroke-width="4" x1="2.7414346458607715" y1="32.781584601839654" x2="76.5" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#00ff00" stroke-width="4" transform="translate(2.7414346458607715,32.781584601839654) rotate(66.038)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 125px; left: 499px; top: 571.5px;" data-name="text-cb17c5" data-block-id="d08a3b5b9d5dcdd963dbc2de695061b7"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22;" data-fragment-index="1"><p><strong>\(\mathcal{O}(|V| |\mathcal{A}|\log |\mathcal{A}|)\)</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 219px; left: 742px; top: 496px;" data-block-id="a46ede413da4b9083de668bbc5afd3a5" data-name="text-5ed936"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23;" data-fragment-index="1"><p><strong>\(\mathcal{O}(|V||T|+|\mathcal{A}|)\)</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 240.524px; left: 729.238px; top: 571.5px;" data-block-id="8efda30bec169f8500432c037ed434f4" data-name="text-9de66a"><div class="sl-block-style" style="z-index: 24; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24;" data-fragment-index="1"><p><strong>\(\mathcal{O}(|V| + |\mathcal{A}|)\)</strong></p></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 268px; left: 499px; top: 448px;" data-name="text-5d4cd0" data-block-id="08878194698545b974de4116a15eca9e"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25;" data-fragment-index="1"><p><strong>Time</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 193px; left: 753px; top: 447px;" data-block-id="9eccc1ef9270511cbe8a2916b4d6a3c2" data-name="text-973610"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 26;" data-fragment-index="1"><p><strong>Space</strong></p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 740px; top: 484px;" data-name="line-301318" data-block-id="d14a86b124acc22d13aa6740a63b0f72"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="120" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 27;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="120" viewbox="0 0 1 120"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="120" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="0" y1="120" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 504px; top: 483px;" data-block-id="c6e5900bc43292d5f6e617e9eb83daca" data-name="line-49a5ca"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="421" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 28;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="421" height="1" viewbox="0 0 421 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="421" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="0" y1="0" x2="421" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 144px; top: 535px;" data-name="line-e591f5" data-block-id="4b648412a39d59174f104a3e4a16f275"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="108" data-line-y2="0" data-line-color="#0000ff" data-line-start-type="none" data-line-end-type="none" style="z-index: 29;" data-line-width="4px" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="108" height="1" viewbox="0 0 108 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="108" y2="0"></line><line class="line-element" stroke="#0000ff" stroke-width="4" x1="0" y1="0" x2="108" y2="0"></line></svg></div></div></section><section data-id="5181d338f8e97c8e3667b77af3bb79f3"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 21.9998px; top: 69.5px;" data-name="line-1fbba7" data-block-id="f126bd265d9fc04966e3eae07d708cdb"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="101" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="101" height="1" viewbox="0 0 101 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="101" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="101" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 173px; left: 21.9998px; top: 21.5px;" data-name="text-64cb14" data-block-id="e39e0fccb8542658ba8a128ebb2678c1"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align: left;"><strong>Proxies</strong></p></div></div>
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 950px; left: 21.9998px; top: 154px;" data-name="text-2ad87b" data-block-id="67f3ece5b4d80a8608f868b7ae19c577"><div class="sl-block-style" style="z-index: 12; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0">
+<p style="text-align:left">We say that a centrality measure \(B\) is a <strong>proxy</strong> for the centrality measure \(A\) if its ranking is "close" to the one of \(A\)</p>
+
+<p>\(R_B\approx R_A\)</p>
+</div></div></div>
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 300px; left: 330px; top: 306px;" data-name="text-1368e1" data-block-id="d87bcbe78ffb32381b711b2607cbed0c"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="1"><p><strong>Two type of proxies</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 133px; left: 11.875px; top: 367px;" data-name="text-ab5c87" data-block-id="9eeeee02367c7c4ad63246da17103edc"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="1"><p style="text-align: left;"><strong>Global</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 133px; left: 11.875px; top: 464.5px;" data-block-id="33875432b235d73dde1772d8f87ba956" data-name="text-f87c9d"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="2"><p style="text-align: left;"><strong>Local</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 668.576px; left: 117.204px; top: 367px;" data-name="text-16c6f4" data-block-id="3e9e78c1fcfd9a8d893d26611583cefd"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="1"><p style="text-align: left;">Centrality values of nodes depend on the entire graph</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 824.987px; left: 117.204px; top: 464px;" data-block-id="f10014f8e1bd006f90af976cbe4822f8" data-name="text-2e4eec"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="2"><p style="text-align: left;">Centrality values of nodes are completely determined by the induced subgraph of their neighborhood (including themselves)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 422px; left: 269px; top: 557px;" data-name="text-15badc" data-block-id="6cc20125fd72d9bbf635a4605e966057"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" data-fragment-index="3"><p><strong>Desired properties of a proxy</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 89px; left: 630px; top: 630px;" data-name="text-bebd7e" data-block-id="f5cd5e086efe39e44f44bb3329cdec5f"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;" data-fragment-index="3"><p><strong>Fast</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 135px; left: 222.25px; top: 630px;" data-block-id="118228538c8c68b049fa69cac95bb7cf" data-name="text-f21063"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20;" data-fragment-index="3"><p><strong>Good</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 844px; left: 21.9998px; top: 96px;" data-name="text-1a96bf" data-block-id="ef8ef19470d07aed2a00102209d21534"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21;"><p style="text-align: left;"><strong>Ranking</strong>: list of nodes sorted in descending order of centrality value</p></div></div></section><section data-id="bf1671fd15656d244b52a285644fa894"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 47px; top: 69px;" data-name="line-1fbba7" data-block-id="54211b0cd2f788c6d3b9990b43258d06"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="722" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="722" height="1" viewbox="0 0 722 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="722" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="722" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 806px; left: 0px; top: 17px;" data-name="text-64cb14" data-block-id="d6e729f22a530a14016e054eb61c5bfa"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><strong>Global Proxies for the Shortest-Temporal Betweenness</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 445px; left: 35px; top: 129px;" data-name="text-d1e376" data-block-id="1bf7d97d5e9dfc480b3227096acef6a6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p><strong>1) ONBRA </strong>[Santoro (WWW, 2022)]:</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 911px; left: 35px; top: 179px;" data-name="text-c1925b" data-block-id="45a12bb1ce84825bb574bfbd92e562c6"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p><span style="font-size:0.9em">Sampling-based absolute approximation algorithm of the shortest tb <em>values</em></span></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 541px; left: 170.978px; top: 309.088px;" data-name="text-8c4604" data-block-id="a6d582b48adf3ea812ca6ddb2d30c050"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<ul>
+	<li class="fragment" data-fragment-index="1">
+<span style="font-size:0.9em"><strong>TIME</strong>(ONBRA)= </span>\(\frac{1}{10}\)<strong>TIME</strong>(exact algorithm)</li>
+</ul>
+
+<p class="fragment" data-fragment-index="0"> </p>
+
+<ul>
+	<li class="fragment" data-fragment-index="2">
+<span style="font-size:0.9em"><strong>TIME</strong>(ONBRA)= </span>\(\frac{1}{2}\)<strong>TIME</strong>(exact algorithm)</li>
+</ul>
+
+<p class="fragment" data-fragment-index="1"> </p>
+
+<ul>
+	<li class="fragment" data-fragment-index="3">
+<span style="font-size:0.9em"><strong>TIME</strong>(ONBRA) = </span><strong>TIME</strong>(exact algorithm)</li>
+</ul>
+</div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 78.2399px; top: 247.648px;" data-name="text-0e8730" data-block-id="2d914324cd5fd22b9a13d06884a7474c"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="0"><p style="text-align:left"><span style="font-size:0.9em"><strong>In this work</strong>: we chose the sample size such that </span></p></div></div></section><section data-id="75dff0c2513b7a3e285654e4f45551e3"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 47px; top: 69px;" data-name="line-1fbba7" data-block-id="5651414724b455dbb60f77ecc54b5167"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="722" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="722" height="1" viewbox="0 0 722 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="722" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="722" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 806px; left: 0px; top: 17px;" data-name="text-64cb14" data-block-id="2ef85dbc2347c6b96994ed164896c3dc"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><strong>Global Proxies for the Shortest-Temporal Betweenness</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 831px; left: 19px; top: 275px;" data-name="text-d1e376" data-block-id="c95388fd15d87ceacb4be71fb4c25cd1"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0"><p><span style="font-size:1.0em"><strong>2) Brandes' algorithm on the underlying graph      \(\mathcal{O}(|V||A|)\)</strong></span></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 445px; left: 35px; top: 129px;" data-block-id="55ff2e9bce77f75da8035c5abd6f957a" data-name="text-cd78f9"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p><span style="font-size:1.0em"><strong>1) ONBRA </strong>[Santoro (WWW, 2022)]</span></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 696px; left: 29px; top: 431px;" data-block-id="685a140694b0235d6adf2b1ea6aa8e1e" data-name="text-e8eed9"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="1"><p><span style="font-size:1.0em"><strong>3) Prefix foremost-temporal betweenness algorithm</strong></span></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 125px; left: 725px; top: 427px;" data-name="text-cb17c5" data-block-id="22dc5d2e09d65401633ebe85858bc1b7"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="1"><p><strong>\(\mathcal{O}(|V| |\mathcal{A}|\log |\mathcal{A}|)\)</strong></p></div></div></section><section data-id="19c3d0e97a49515b647ddac8d01d9dfc"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="1efa56803aa49e21f572dbf5cfd5202d"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="539" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="539" height="1" viewbox="0 0 539 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="539" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="539" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 539px; left: 37px; top: 24px;" data-name="text-64cb14" data-block-id="0f07456117b604f195b67575c98a63e2"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><strong>Experimental setting: temporal networks</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 964.014px; height: 690px; left: 28.166px; top: 84px; min-width: 1px; min-height: 1px;" data-name="image-51bb9d" data-block-id="7a48fb5fe1046c6d23686bfb44641cc9"><div class="sl-block-style" style="z-index: 12; transform: rotate(0deg);"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="971" data-natural-height="695" data-lazy-loaded="" data-src="minimal-4205fa/fe1d920a86b7b0330504c29efd71be9e.png"></div></div></div></section><section data-id="8cff3cf65e33120d865b10e80cb7ffdf"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="d81f0d9e02b51e57c66644c505dae6f7"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="703" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="703" height="1" viewbox="0 0 703 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="703" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="703" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="4b17485d641c1196b4afe4de512898cc"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><strong>Experimental setting: implementation and evaluation</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 534px; left: 37px; top: 112px;" data-name="text-d935cb" data-block-id="c5b3f91f33a81c243ae50c5ef10bb6d7"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0"><p>All the algorithms are implemented in Julia</p></div></div>
+<div class="sl-block" data-block-type="image" style="width: 181px; height: 120.667px; left: 766px; top: 69.6665px; min-width: 1px; min-height: 1px;" data-name="image-5bd470" data-block-id="dc96cccbcc832d6ca753e7d9e763a659"><div class="sl-block-content fragment" style="z-index: 13;" data-fragment-index="0"><img class="" data-natural-width="2025" data-natural-height="1350" data-lazy-loaded="" data-src="minimal-4205fa/d1e73e8dcb9548026eec69b2ce21fc4c.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 910px; left: 37px; top: 275px;" data-name="text-3fd3de" data-block-id="66748049e4d8e21d1606d8861cb3681d"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;">
+<p style="text-align:left"> </p>
+
+<ul>
+	<li class="fragment" data-fragment-index="1" style="text-align:left">we compute a complete ranking of the nodes</li>
+	<li class="fragment" data-fragment-index="2" style="text-align:left">evaluate how this ranking relates to the “correct” ranking<br>
+	computed by the algorithm of Bu\(\text{\ss}\) et al.</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 164px; top: 450px;" data-name="line-c258f7" data-block-id="025587e6bc1f2a081b9a26999ef652ec"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="490" data-line-y2="0" data-line-color="#00ff00" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;" data-line-width="3px" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="490" height="1" viewbox="0 0 490 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="490.5" y2="0.5"></line><line class="line-element" stroke="#00ff00" stroke-width="3" x1="0.5" y1="0.5" x2="490.5" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 164px; top: 403px;" data-block-id="42322e02c108e9c152fc741f01c327d4" data-name="line-6343a7"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="692.5" data-line-y2="0" data-line-color="#00ff00" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="3px" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="692.5" height="1" viewbox="0 0 692.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0.5" y1="0.5" x2="693" y2="0.5"></line><line class="line-element" stroke="#00ff00" stroke-width="3" x1="0.5" y1="0.5" x2="693" y2="0.5"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 311px; top: 460px;" data-name="line-9f813b" data-block-id="bedfa7ab4788e87108920e28c5c44815"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="91" data-line-x2="130" data-line-y2="0" data-line-color="#000000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 17;" data-line-width="4px" data-fragment-index="4"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="130" height="91" viewbox="0 0 130 91"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="2.4576957615571215" y1="89.27961296691001" x2="130" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="4" x1="2.4576957615571215" y1="89.27961296691001" x2="130" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="4" transform="translate(2.4576957615571215,89.27961296691001) rotate(55.008)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 461px; top: 460px;" data-block-id="540421060546396e9a2a9227d68711ad" data-name="line-2157c6"><div class="sl-block-content fragment" data-line-x1="117.25" data-line-y1="91" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 18;" data-line-width="4px" data-fragment-index="5"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="117.25" height="91" viewbox="0 0 117.25 91"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="114.88003993895477" y1="89.1606280123231" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="4" x1="114.88003993895477" y1="89.1606280123231" x2="0" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="4" transform="translate(114.88003993895477,89.1606280123231) rotate(-52.184)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 330px; left: 20px; top: 592px;" data-name="text-631982" data-block-id="d342e1c11695b547851a8af0f8e36d55"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;" data-fragment-index="4"><p>Weighted Kendall's \(\tau\) [Vigna (WWW 2015)]</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 279px; left: 514.5px; top: 592px;" data-block-id="55f1a243a6438dc7d6337b67db0c9053" data-name="text-b02ecf"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20;" data-fragment-index="5"><p>TOP K nodes in the ranking</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 270px; left: 20px; top: 281px;" data-name="text-5bf092" data-block-id="e109e6084ec2c9338c54d495161f4ba8"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21;" data-fragment-index="1"><p>For each algorithm:</p></div></div></section><section data-id="e536f6dfc21415c4c9b328047d44f66b"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="b8262d33c222354ecf8637bc50154df2"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="691" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="691" height="1" viewbox="0 0 691 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="691" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="691" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="59e2c4e461bd77fd929f48b08359de03"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Experiment 1: global proxies (rank correlation)</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 923.4px; height: 307.8px; left: 18.3px; top: 89.6px; min-width: 1px; min-height: 1px;" data-name="image-ea1783" data-block-id="1eac07d4f1eecf8c24035f0e9124814e"><div class="sl-block-content fragment" style="z-index: 12;" data-fragment-index="0"><img class="" data-natural-width="1500" data-natural-height="500" data-lazy-loaded="" data-src="minimal-4205fa/b2df4ac4a39b3cfa99138b2c871dbb24.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 126px; left: 284.5px; top: 453.4px;" data-name="text-75ea3b" data-block-id="3c8059cab6b1e4683b8b9eb3e22b81b6"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="1"><p><strong>Brandes</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 126px; left: 495.5px; top: 453.4px;" data-block-id="d93554d844a7d9ab8455efb51df25d68" data-name="text-a88179"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="1"><p style="text-align: left;"><strong>Prefix</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 126px; left: 677.5px; top: 453.4px;" data-block-id="30a18c2d416bbe656bd530f2bc6b8ff9" data-name="text-ce35d9"><div class="sl-block-content fragment current-visible" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="1"><p style="text-align:left"><strong>ONBRA 1</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 220px; left: 11px; top: 533.4px;" data-block-id="ff49728b818ec14bcc9534c61ec9739f" data-name="text-6f8daf"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="1"><p><span style="font-size:0.9em"><strong>W. Kendall's \(\tau\)</strong></span></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 318.5px; top: 540.4px;" data-name="text-ca80c1" data-block-id="c173f06b59cf643d9a471289443a854c"><div class="sl-block-content fragment current-visible" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;" data-fragment-index="1"><p>3</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 500px; top: 540.4px;" data-block-id="0847ee002f49b424c3f811d9666cd421" data-name="text-8dd36a"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" data-fragment-index="1"><p>5</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 706px; top: 540.4px;" data-block-id="c9502522aa200a3d6a879adcd5e21854" data-name="text-1d6523"><div class="sl-block-content fragment current-visible" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;" data-fragment-index="1"><p>10</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 166.5px; left: 677.5px; top: 452.4px;" data-block-id="494f708a21726eb0ee5ccba2da5ddd8b" data-name="text-2bbe73"><div class="sl-block-style" style="z-index: 20; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20;" data-fragment-index="2"><p style="text-align:left"><strong>ONBRA \(\frac{1}{10}\)</strong></p></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 706px; top: 540.4px;" data-block-id="058e91bd3193ed0440bf4e0a5a21a57b" data-name="text-643dc6"><div class="sl-block-style" style="z-index: 21; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21;" data-fragment-index="2"><p>0</p></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 318.5px; top: 540.4px;" data-block-id="fa5a103e223aebaf22789e27fd3bbddc" data-name="text-54c7ca"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22;" data-fragment-index="2"><p>11</p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 257.5px; top: 506.4px;" data-block-id="bbdad84ffa7d33ab84bfe578532e5896" data-name="line-fad70c"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="173" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 23;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="173" viewbox="0 0 1 173"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="173" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="0" y1="173" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 29.3px; top: 506.4px;" data-block-id="ba168fd1d6fb5f59530885b089ae1d27" data-name="line-ebed34"><div class="sl-block-content fragment" data-line-x1="849.7" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 24;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="849.7" height="1" viewbox="0 0 849.7 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="849.7" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="849.7" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 292.5px; top: 443.4px;" data-block-id="19bf97cdb51458717c724d96ae5a32ca" data-name="line-8ebc24"><div class="sl-block-content fragment" data-line-x1="518.5" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 25;" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="518.5" height="1" viewbox="0 0 518.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="518.5" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="518.5" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 361px; left: 382.5px; top: 397.4px;" data-block-id="cc9cfc8d03b7c4fcdd0a5ca3a63419a6" data-name="text-702c45"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 26;" data-fragment-index="1"><p><strong># times a proxy wins</strong></p></div></div></section><section data-id="019b37a2fef2b870795ac89f2edef179"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="7fd726febd6ba80f1651e79d6a96a36a"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="691" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="691" height="1" viewbox="0 0 691 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="691" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="691" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="5ba174301137cc6a76b4e99d20195ad4"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Experiment 1: global proxies (rank correlation)</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 126px; left: 273.5px; top: 450.4px;" data-name="text-75ea3b" data-block-id="ad4e3cba57a60d80fdac9c46f8ff3b19"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p><strong>Brandes</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 126px; left: 484.5px; top: 450.4px;" data-name="text-a88179" data-block-id="6737105e8443316b681f22e7bae665c2"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p style="text-align: left;"><strong>Prefix</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 126px; left: 666.5px; top: 450.4px;" data-name="text-ce35d9" data-block-id="0c79142b3a0eaa9d596bf199296f5fc5"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="0"><p style="text-align:left"><strong>ONBRA 1</strong></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 220px; left: 0px; top: 530.4px;" data-name="text-6f8daf" data-block-id="cc1c0d247e43ddefb34a2d2354a758ca"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;"><p><span style="font-size:0.9em"><strong>W. Kendall's \(\tau\)</strong></span></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 307.5px; top: 537.4px;" data-name="text-ca80c1" data-block-id="20e638e37ba774353f8c56de05c81051"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="0"><p>3</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 489px; top: 537.4px;" data-name="text-8dd36a" data-block-id="b1400519f8978db7b3bbbf07b3d0f7b4"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 17;"><p>5</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 695px; top: 537.4px;" data-name="text-1d6523" data-block-id="f80fdd51369475d1915873dc815cacad"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" data-fragment-index="0"><p>10</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 166.5px; left: 666.5px; top: 447.4px;" data-name="text-2bbe73" data-block-id="c0ddda8143c4aef5c6eab63532baa06c"><div class="sl-block-style" style="z-index: 19; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 19;" data-fragment-index="0"><p style="text-align:left"><strong>ONBRA \(\frac{1}{10}\)</strong></p></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 695px; top: 537.4px;" data-name="text-643dc6" data-block-id="5926556b29a62b152d82dfb078e3c557"><div class="sl-block-style" style="z-index: 20; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20;" data-fragment-index="0"><p>0</p></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 307.5px; top: 537.4px;" data-name="text-54c7ca" data-block-id="cf13c7367bea18d84731609e9e20a952"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21;" data-fragment-index="0"><p>11</p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 246.5px; top: 503.4px;" data-name="line-fad70c" data-block-id="9731d83ffbfa0d8c6c981c601675a2ee"><div class="sl-block-content" data-line-x1="0" data-line-y1="173" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 22;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="173" viewbox="0 0 1 173"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="173" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="0" y1="173" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 18.3px; top: 503.4px;" data-name="line-ebed34" data-block-id="770e8ba04f923305bb8370cab5e5ebc8"><div class="sl-block-content" data-line-x1="849.7" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 23;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="849.7" height="1" viewbox="0 0 849.7 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="849.7" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="849.7" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 905.4px; height: 301.8px; left: 17.3px; top: 86.6px; min-width: 1px; min-height: 1px;" data-name="image-2c0874" data-block-id="6515cb7e3feeccef4cbd138594fd777e"><div class="sl-block-content" style="z-index: 24;"><img class="" data-natural-width="1500" data-natural-height="500" data-lazy-loaded="" data-src="minimal-4205fa/1bc4328b74ab30b4cc8e720e1a5f3943.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 135px; left: 24.5px; top: 624.4px;" data-block-id="ae2d2b09cb25b6e19120a2daa63830ef" data-name="text-c88656"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25; text-align: left;"><p><span style="font-size:0.9em"><strong>TOP(50)</strong></span></p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 489px; top: 624.4px;" data-block-id="1be046d100348e06e9f5251fc1574233" data-name="text-0d07b0"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 26;" data-fragment-index="0"><p>2</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 307.5px; top: 624.4px;" data-block-id="d6a45a36859b60edd51b2817cc056da7" data-name="text-b9384d"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 27;" data-fragment-index="0"><p>1</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 691.75px; top: 624.4px;" data-block-id="db11fd92f07dac8f68c01f82b35cc719" data-name="text-29ca8f"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 28;" data-fragment-index="0"><p>12</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 307.5px; top: 624.4px;" data-block-id="f119c53ad0e83c7b9b68caffea4b98fd" data-name="text-4550e1"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 29;" data-fragment-index="0"><p>11</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 489.5px; top: 624.4px;" data-block-id="8998f0d9fa9548f62196cab21105b0f9" data-name="text-a6e2d8"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 30;" data-fragment-index="0"><p>3</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 58px; left: 691px; top: 624.4px;" data-block-id="de55e66162b907c4c6bd6b2ec6c1c418" data-name="text-69fc53"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 31;" data-fragment-index="0"><p>3</p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 281.5px; top: 446.4px;" data-name="line-8ebc24" data-block-id="0a0720c91dc6a6efea8e6c6eaa59a4dd"><div class="sl-block-content" data-line-x1="518.5" data-line-y1="0" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 32;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="518.5" height="1" viewbox="0 0 518.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="518.5" y1="0" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="518.5" y1="0" x2="0" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 361px; left: 371.5px; top: 400.4px;" data-name="text-702c45" data-block-id="80d26e37585e4b7208775660f0da554f"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 33;"><p><strong># times a proxy wins</strong></p></div></div></section><section data-id="cc58681ac6d13f1e8f975f3ef2a2cc37"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="627d34e8ea3edbf74e1d0e433dfb84bb"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="691" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="691" height="1" viewbox="0 0 691 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="691" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="691" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="3a63a52dcb61ae240a67fe8fee70d795"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Experiment 1: global proxies (running time)</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 1012.49px; height: 631.466px; left: -26.245px; top: 79px; min-width: 1px; min-height: 1px;" data-name="image-be9222" data-block-id="cd904d1ef198c24e80d42be56bcd30c4"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1132" data-natural-height="706" data-lazy-loaded="" data-src="minimal-4205fa/d0cc449030494bb3ac449e0219ca45b8.png"></div></div>
+<div class="sl-block" data-block-type="shape" style="width: 119px; height: 383px; left: 548px; top: 209px;" data-name="shape-80fc79" data-block-id="94df253c4dee0a3ee5c02c45a45f3b04"><div class="sl-block-content fragment" data-shape-type="rect" data-shape-fill-color="rgba(0, 0, 0, 0)" data-shape-stretch="true" style="z-index: 13;" data-shape-stroke-color="#00ff00" data-shape-stroke-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="100%" height="100%" preserveaspectratio="none" viewbox="0 0 119 383"><defs><clippath id="shape-mask-3-1689782150393"><rect width="119" height="383" rx="0" ry="0" fill="rgba(0, 0, 0, 0)" stroke="#00ff00" stroke-width="8"></rect></clippath></defs><rect width="119" height="383" rx="0" ry="0" class="shape-element" fill="rgba(0, 0, 0, 0)" stroke="#00ff00" stroke-width="8" clip-path="url(#shape-mask-3-1689782150393)"></rect></svg></div></div></section><section data-id="43bd3fc6d899d096be73071f67ebc16b"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 47px; top: 69px;" data-name="line-1fbba7" data-block-id="f929e3a001f155d7614caf881b232d6a"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="348" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="348" height="1" viewbox="0 0 348 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="348" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="348" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 348px; left: 47px; top: 18px;" data-name="text-64cb14" data-block-id="6a9b3309785baa976c2a4a31d4a0020d"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><strong>Speeding up: local proxies</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 799px; left: 69px; top: 130px;" data-name="text-e8eed9" data-block-id="f3b24c2a345e2749d5731a60e8637073">
+<div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p><span style="font-size:1.0em">Global proxies do not scale well as the network size increases!</span></p></div>
+<grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 14;" class="dnXmp"></grammarly-extension><grammarly-extension data-grammarly-shadow-root="true" style="position: absolute; top: 0px; left: 0px; pointer-events: none; z-index: 14;" class="dnXmp"></grammarly-extension>
+</div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 480px; top: 176px;" data-name="line-ff0a70" data-block-id="3dac2fde9e21fbd0cf88de997850415a"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="91" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 13;" data-line-width="4px" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="91" viewbox="0 0 1 91"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="88" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="4" x1="0" y1="88" x2="0" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="4" transform="translate(0,88) rotate(0)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 94px; top: 166px;" data-name="line-a95db5" data-block-id="de42688266fe96cae69d4b530ea8f282"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="747" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="747" height="1" viewbox="0 0 747 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="747" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="747" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 553px; left: 203.5px; top: 279px;" data-name="text-d7fd83" data-block-id="74000d83b71f5c9744af17a7d70906d1"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;" data-fragment-index="0"><p>Consider only local properties of the nodes</p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 395px; top: 315px;" data-name="line-738958" data-block-id="4661ea85b99c5dd20ae27149673f8889"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="0" data-line-x2="191" data-line-y2="0" data-line-color="#000000" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;" data-line-width="2px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="191" height="1" viewbox="0 0 191 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="191" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="0" y1="0" x2="191" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 479px; top: 316.5px;" data-name="line-8e0f8b" data-block-id="55ef14d960ef9d9f9fbeeed2fddfddf7"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="65" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 17;" data-line-width="4px" data-fragment-index="1"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="65" viewbox="0 0 1 65"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="62" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="4" x1="0" y1="62" x2="0" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="4" transform="translate(0,62) rotate(0)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 311px; left: 324.5px; top: 389px;" data-name="text-6dca53" data-block-id="48e227710a9bc3e1aac3703f960ae0a4"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" data-fragment-index="1"><p>Neighborhood</p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 364px; top: 425px;" data-block-id="ba44ff624990703928041d5c1d00dbbe" data-name="line-6a210a"><div class="sl-block-content fragment" data-line-x1="0" data-line-y1="96" data-line-x2="114" data-line-y2="0" data-line-color="#000000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 19;" data-line-width="4px" data-fragment-index="2"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="114" height="96" viewbox="0 0 114 96"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="2.2947335943511527" y1="94.06759276265166" x2="114" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="4" x1="2.2947335943511527" y1="94.06759276265166" x2="114" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="4" transform="translate(2.2947335943511527,94.06759276265166) rotate(49.899)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 478px; top: 425px;" data-block-id="5fc84f6ec7ce5f384d20804e2bcf70f7" data-name="line-898464"><div class="sl-block-content fragment" data-line-x1="92" data-line-y1="96" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 20;" data-line-width="4px" data-fragment-index="3"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="92" height="96" viewbox="0 0 92 96"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="89.92428391029316" y1="93.83403538465373" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="4" x1="89.92428391029316" y1="93.83403538465373" x2="0" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="4" transform="translate(89.92428391029316,93.83403538465373) rotate(-43.781)" d="M -9 -9 L 0 0 L 9 -9"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 163px; left: 282.5px; top: 540px;" data-block-id="d86b56b7a0fb82c1e0ab5bdc6074fafb" data-name="text-3ac959"><div class="sl-block-style" style="z-index: 21; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21;" data-fragment-index="2"><p>Degree</p></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 223px; left: 490.5px; top: 540px;" data-block-id="a0fa3d692a7c3e0745807579d13e92b5" data-name="text-a77b7c"><div class="sl-block-style" style="z-index: 22; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22;" data-fragment-index="3"><p>Ego-Betweenness</p></div></div></div></section><section data-id="8cd2a6336d2774877927bee8efc01fb0"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 47px; top: 69px;" data-name="line-1fbba7" data-block-id="3c5091b1391b8a66c8bed20f1474c49d"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="720" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="720" height="1" viewbox="0 0 720 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="720" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="720" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 720px; left: 47px; top: 18px;" data-name="text-64cb14" data-block-id="dffe8a3b98221085c35607c514c0ff26"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><strong>A novel temporal degree notion: Pass-Through Degree</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 482px; left: 37.5px; top: 118px;" data-name="text-29cd82" data-block-id="77c3dd59b7fcda7513ab0e77c52bdc7b"><div class="sl-block-style" style="z-index: 12; transform: rotate(0deg);"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0"><p><strong>Existing temporal degree definitions:</strong></p></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 885px; left: 0px; top: 164px;" data-name="text-59f60c" data-block-id="f48a71fef0f6d29aa812c4bcdd8d4857"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="0"><ul>
+	<li>Degree on the underlying graph: \(d_{und}(v) = \left| \bigcup_{t\in[T]}N_t(v)\right|\)</li>
+	<li>Average degree [Latapy (2018)]: \(d_{avg}(v) =\frac{1}{|T|}\sum_{t\in[T]}|N_t(v)|\)</li>
+</ul></div></div>
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 301px; left: 37.5px; top: 120.099px;" data-block-id="4a6c893264290d94075f157f7e8cf9f7" data-name="text-fc58cc"><div class="sl-block-style" style="z-index: 14; transform: rotate(0deg);"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;" data-fragment-index="0"><p style="text-align: left;"><strong>Why PTD?</strong></p></div></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 699.34px; left: 47px; top: 419px;" data-block-id="3d1b6b2c56fef4d38d7bc46aebf15cb7" data-name="text-21296a"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;"><ul>
+	<li class="fragment fade-out" data-fragment-index="0">\(\text{t-ptd}(v) = \sqrt{|\{(u,w)\in (V\setminus \{v\})^2\}|: u\rightarrow v\rightarrow w\}|}\)</li>
+</ul></div></div>
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 929px; left: 26.5px; top: 479px;" data-name="text-fd6d4f" data-block-id="c560380e120991d8d7605e0ab84863b1"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="0"><p>Can be computed in \(\mathcal{O}(|\mathcal{A}|\log |A|) = \tilde{\mathcal{O}}(|\mathcal{A}|)\) time using \(\mathcal{O}(|V|+|A|)\) space</p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 26.5px; top: 529px;" data-name="line-70d985" data-block-id="61690f66a40c04f83fde89c3c160338e"><div class="sl-block-content fragment fade-out" data-line-x1="0" data-line-y1="0" data-line-x2="909" data-line-y2="0" data-line-color="#00ff00" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;" data-fragment-index="0"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="909" height="1" viewbox="0 0 909 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="909" y2="0"></line><line class="line-element" stroke="#00ff00" stroke-width="2" x1="0" y1="0" x2="909" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 301px; left: 37.5px; top: 357px;" data-block-id="65da9c2174a56cdad8223a442e4745e2" data-name="text-cbef86"><div class="sl-block-style" style="z-index: 18; transform: rotate(0deg);"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 18;" data-fragment-index="0"><p><strong>Pass-Through Degree:</strong></p></div></div></div>
+<div class="sl-block" data-block-type="image" style="width: 806.4px; height: 253.803px; left: 149.1px; top: 174.197px; min-width: 1px; min-height: 1px;" data-name="image-54d6a3" data-block-id="eff73fc2ccf514f0a676c0a98e7dfa33"><div class="sl-block-content fragment" style="z-index: 19;" data-fragment-index="0"><img class="" data-natural-width="699" data-natural-height="220" data-lazy-loaded="" data-src="minimal-4205fa/fb31237e3159b782d8323371cb06ddc9.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 113.64px; left: 10.84px; top: 493px;" data-name="text-be5fe1" data-block-id="da1dd0595959b69d9554436c3df754c2"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 20;" data-fragment-index="0"><p>\(d_{und}(v)\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 113.64px; left: 10.84px; top: 558px;" data-block-id="5f681f7e7e3a9c7982d1bc2c5bbf1888" data-name="text-b14f77"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 21;" data-fragment-index="0"><p>\(d_{avg}(v)\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 113.64px; left: 10.84px; top: 631px;" data-block-id="548cbaa90f6d33943d9b60ca0d267bc7" data-name="text-7f3632"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 22;" data-fragment-index="0"><p>\(\text{t-ptd}(v)\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 102.17px; left: 364.915px; top: 500px;" data-block-id="5cac0bbc0b17ad01cda637738130c50d" data-name="text-064008"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 23;" data-fragment-index="0"><p>\(k+1\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 102.17px; left: 364.915px; top: 569.5px;" data-block-id="002d08fdffd535e2b49d4bacdddf586a" data-name="text-eeda03"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 24;" data-fragment-index="0"><p>\(1\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 102.17px; left: 364.915px; top: 639px;" data-block-id="45be1860010c0792b897e2936ecead1f" data-name="text-9400f2"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 25;" data-fragment-index="0"><p>\(\sqrt{k}\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 102.17px; left: 124.48px; top: 500px;" data-block-id="2b357cadcd6ed0deb17cfd628ebf46a2" data-name="text-91fdc0"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 26;" data-fragment-index="0"><p>\(1\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 102.17px; left: 124.48px; top: 631px;" data-block-id="8ff132128344a1c12d513cb672059710" data-name="text-cdba15"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 27;" data-fragment-index="0"><p>\(1\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 102.17px; left: 124.48px; top: 560px;" data-block-id="ce080d366efe689b99baad5762b0b39c" data-name="text-e8ac9c"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 28;" data-fragment-index="0"><p>\(1\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 102.17px; left: 739.66px; top: 493px;" data-block-id="bc85f51689f01d0436596d7f2073da9b" data-name="text-d6f918"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 29;" data-fragment-index="0"><p>\(k+1\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 102.17px; left: 740px; top: 560px;" data-block-id="45e8458046a60a3371dc59e92c6d5413" data-name="text-baecde"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 30;" data-fragment-index="0"><p>\(1\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 170.17px; left: 714.83px; top: 624px;" data-block-id="4b97d3da91cae223162cff81d46bd078" data-name="text-2cd7e4"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 31;" data-fragment-index="0"><p>\(\sqrt{\frac{k(k+1)}{2}}\approx k\)</p></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 412.34px; left: 80.66px; top: 288px;" data-name="text-ee235c" data-block-id="4e529e5a8a56654992207e1cc78fec7b"><div class="sl-block-content fragment fade-out" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 32;" data-fragment-index="0"><p style="text-align: left;">\(N_t(v) = \{u\in N(v):(v,u,t)\in \mathcal{A}\}\)</p></div></div></section><section data-id="eca6c67980c1735e57a61f6d8266e664"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 48px; top: 67px;" data-name="line-1fbba7" data-block-id="8a47c801340ce579f6703e42768ec8fb"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="240" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="240" height="1" viewbox="0 0 240 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="240" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="240" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 266px; left: 35px; top: 17px;" data-name="text-64cb14" data-block-id="f69836608df6a5f529dcea641d5e5035"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p><strong>Ego Betweenness</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 900px; left: 48px; top: 82px;" data-name="text-a16035" data-block-id="c6579d2d42367c4cf35d06f133e6ab36"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p style="text-align:left">The temporal ego-betweenness of \(u\) is the temporal betweenness computed on the temporal graph induced  by the in- and out-neighbors of \(u\)</p></div></div>
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 414.77px; height: 371.25px; left: 272.615px; top: 246.5px; min-width: 1px; min-height: 1px;" data-name="image-ebdfb6" data-block-id="803d9fc4f92e7714129d1472b943a045"><div class="sl-block-content" style="z-index: 18;"><img class="" data-natural-width="467" data-natural-height="418" data-lazy-loaded="" data-src="minimal-4205fa/1227d1e7dafd75c7799da264f51fd747.png"></div></div>
+
+
+
+
+</section><section data-id="ce82d0009bc585e77bcab68d239fa9f6"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="fa34ba6cd8e4f128fc3d1d0bb5f74648"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="691" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="691" height="1" viewbox="0 0 691 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="691" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="691" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="a49cbce9d29d60f83f873e943f163bf0"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Experiment 2: local proxies (rank correlation)</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 220px; left: 0px; top: 391.4px;" data-name="text-6f8daf" data-block-id="a7501ed07f9255cc59b50bb63d477b31"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;"><p><span style="font-size:0.9em"><strong>W. Kendall's \(\tau\)</strong></span></p></div></div>
+<div class="sl-block" data-block-type="image" style="width: 926.4px; height: 308.8px; left: 18.3px; top: 82.6px; min-width: 1px; min-height: 1px;" data-name="image-c5332d" data-block-id="bfe1ed06fc7e7d234f46d1f7162d7dec"><div class="sl-block-content fragment fade-out" style="z-index: 13;" data-fragment-index="0"><img class="" data-natural-width="1500" data-natural-height="500" data-lazy-loaded="" data-src="minimal-4205fa/03b418480be45ff0cb71c5cfc87fee42.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 715px; left: 155px; top: 449.4px;" data-name="text-20a50e" data-block-id="4d9148a5999a291b226ce730685a4e62"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 14;"><ul>
+	<li>PTD does not perform worse than EgoSTB and ONBRA</li>
+	<li>At least as good as ONBRA on 10 over 15 networks</li>
+</ul></div></div>
+<div class="sl-block" data-block-type="image" style="width: 911.7px; height: 303.9px; left: 33px; top: 82.6px; min-width: 1px; min-height: 1px;" data-name="image-52a8d7" data-block-id="0421b7cdf92377c869f0f8041d9f1d33"><div class="sl-block-content fragment" style="z-index: 15;" data-fragment-index="0"><img class="" data-natural-width="1500" data-natural-height="500" data-lazy-loaded="" data-src="minimal-4205fa/be6d9de24e59c072f44c6a18bae49f95.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 220px; left: 205px; top: 391.4px;" data-block-id="59ba8f349b1dc19ba24bc6e1f678ec09" data-name="text-008178"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 16;" data-fragment-index="0"><p style="text-align:left"><span style="font-size:0.9em"><strong>and TOP(50)</strong></span></p></div></div></section><section class="stack" data-id="0bf13f84986f67b7788b53838c6b8033"><section data-id="44c67a55d15c4e99dbe049df001a9abc"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="8fe9f5357798134164bd4a6c2ccfa556"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="691" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="691" height="1" viewbox="0 0 691 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="691" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="691" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="bfc5537d73b595d50b90b9a2887345e4"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Experiment 2: local proxies (running time)</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 1050.12px; height: 654.931px; left: -45.06px; top: 108.535px; min-width: 1px; min-height: 1px;" data-name="image-92cf57" data-block-id="09a24fcacb1bf76a26a60b306c0e4442"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1132" data-natural-height="706" data-lazy-loaded="" data-src="minimal-4205fa/7dd7c6d1fc48eb9f215609e26b53b51e.png"></div></div></section><section data-id="61d964e8d723e22d6f21c1385d050ee1"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="23bcecceb4b702726e498461b99ccfe6"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="691" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="691" height="1" viewbox="0 0 691 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="691" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="691" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="43757797db0206a1c601041620b42f97"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Experiment 2: local proxies (running time)</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 943px; height: 674.959px; left: 17px; top: 73px;" data-name="image-a96c63" data-block-id="4a600bbefef40fca6d5b4836d84cd47e"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="971" data-natural-height="695" data-lazy-loaded="" data-src="minimal-4205fa/fe1d920a86b7b0330504c29efd71be9e.png"></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 695px; top: 167px;" data-name="line-262b44" data-block-id="8c3cf3ff5539151c0d5288f9361848d8"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="43" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 13;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="43" height="1" viewbox="0 0 43 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="43" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="43" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 695px; top: 203px;" data-block-id="b1ac43e9e9ba2684c888247cbb966f10" data-name="line-af00d6"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="43" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="43" height="1" viewbox="0 0 43 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="43" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="43" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 695px; top: 230px;" data-block-id="53fafb7479cec50d4d591860199b1422" data-name="line-442285"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="43" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 15;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="43" height="1" viewbox="0 0 43 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="43" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="43" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 695px; top: 319px;" data-block-id="26299d0db26d5dbc7016ce920f54ba47" data-name="line-ef9124"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="43" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="43" height="1" viewbox="0 0 43 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="43" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="43" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 695px; top: 409.48px;" data-block-id="96f04230557f0e2b72a400f526db105d" data-name="line-39594b"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="43" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 17;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="43" height="1" viewbox="0 0 43 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="43" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="43" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 685px; top: 538px;" data-block-id="bfa31b6aa4cd69354ffa9a0528cc85da" data-name="line-f6b559"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="43" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 19;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="43" height="1" viewbox="0 0 43 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="43" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="43" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 685px; top: 598px;" data-block-id="155327e1436f842a878d3b0734dcbe98" data-name="line-7ac49e"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="43" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 20;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="43" height="1" viewbox="0 0 43 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="43" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="43" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 685px; top: 503.5px;" data-block-id="7ca7e3356ea9556d31e897e339e049e1" data-name="line-896d5d"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="43" data-line-y2="0" data-line-color="#ff0000" data-line-start-type="none" data-line-end-type="none" style="z-index: 21;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="43" height="1" viewbox="0 0 43 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="43" y2="0"></line><line class="line-element" stroke="#ff0000" stroke-width="2" x1="0" y1="0" x2="43" y2="0"></line></svg></div></div></section></section><section data-id="79b8c8a5009b7f163bcd239e71c4990d"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="88766b91239453ff90f7ad3fe244e111"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="376" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="376" height="1" viewbox="0 0 376 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="376" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="376" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="2c1554f0cc09e94269ebbd4b8b6b0b9d"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Summary of the experiments</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 881.4px; height: 293.8px; left: 8px; top: 161.6px; min-width: 1px; min-height: 1px;" data-name="image-8ddfc0" data-block-id="95ef1e8545374a652630099e3a4df771"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="1500" data-natural-height="500" data-lazy-loaded="" data-src="minimal-4205fa/70a8283ba2c50fb203a1aed159b09df3.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 283px; left: 616.4px; top: 87.5px;" data-name="text-b7ed1d" data-block-id="07a34f295571fcb43b11d36409f2f649"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p><span style="font-size:0.7em">Median w. Kendalls' \(\tau\)</span></p></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 749px; top: 123px;" data-name="line-033a93" data-block-id="03136d7eb65b521bccd23af8e7eeacd5"><div class="sl-block-content" data-line-x1="0" data-line-y1="31" data-line-x2="0" data-line-y2="0" data-line-color="#000000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 14;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="1" height="31" viewbox="0 0 1 31"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="29" x2="0" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="0" y1="29" x2="0" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="2" transform="translate(0,29) rotate(0)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 284px; left: 790.9px; top: 278px;" data-block-id="28d3686c2dbf5a43a76dc3af29a61981" data-name="text-00ea5d"><div class="sl-block-style" style="z-index: 15; transform: rotate(90deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 15;"><p><span style="font-size:0.7em">Median time ratio (proxy/exact)</span></p></div></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 889.4px; top: 277px;" data-name="line-2869f8" data-block-id="3d150ff57d1f3278d69ac3cc706cad54"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="25.5" data-line-y2="0" data-line-color="#000000" data-line-start-type="line-arrow" data-line-end-type="none" style="z-index: 16;"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="25.5" height="1" viewbox="0 0 25.5 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="2" y1="0" x2="25.5" y2="0"></line><line class="line-element" stroke="#000000" stroke-width="2" x1="2" y1="0" x2="25.5" y2="0"></line><path style="fill: rgba(0,0,0,0);" stroke="#000000" stroke-width="2" transform="translate(2,0) rotate(90)" d="M -6 -6 L 0 0 L 6 -6"></path></svg></div></div></section><section data-id="04766229824187be4b8022628e5e31a9"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="bd8a85e84f5e35a08778c921d82e5bd6"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="149" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="149" height="1" viewbox="0 0 149 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="149" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="149" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 156px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="059a017e6492b8411203dd6ed8bf336b"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Conclusion </strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 890px; left: 43px; top: 88px;" data-name="text-b65098" data-block-id="08c61a2ecad6fc2c85b613e761603f92"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 12;" data-fragment-index="0">
+<p style="text-align: left;"><strong>In this work:</strong></p>
+
+<ul>
+	<li>Experimentally compared three global and three local proxies for shortest temporal betweenness</li>
+	<li>Introduced a novel temporal degree notion</li>
+</ul>
+</div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 925px; left: 35px; top: 334px;" data-block-id="0577110c5a2c909615dac43131cdc2a0" data-name="text-2d7626"><div class="sl-block-content fragment" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;" data-fragment-index="1">
+<p style="text-align:left"><strong>Future directions:</strong></p>
+
+<ul>
+	<li>Explaining the correlation between PTD and STB by using temporal graph parameters [Tang et al. (2009), Nicosia et al. (2013)]</li>
+	<li>Use PTD as a proxy for static/temporal centrality in the context of routing schemes</li>
+	<li>Conditional lower bound on the time complexity of computing STB</li>
+	<li>Coditional lower bound (or better algorithm) for the ego betweenness</li>
+	<li>Generalize the PTD to \(k\)-hop paths</li>
+</ul>
+</div></div></section><section data-id="198497e3946d3422c61c75175a560a4d">
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="text" style="height: auto; width: 600px; left: 180px; top: 286px;" data-name="text-d198e3" data-block-id="df6eb8ee6c24cd05d8dea484a38f9167"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 10;"><h1><strong>Thank you</strong></h1></div></div>
+<div class="sl-block" data-block-type="line" style="width: auto; height: auto; min-width: 0px; min-height: 0px; left: 327px; top: 350px;" data-name="line-82da26" data-block-id="ad139d87502c7b37ad64ef7fa0c8b860"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="305" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 11;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="305" height="1" viewbox="0 0 305 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="305" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="305" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="image" style="width: 178px; height: 178px; left: 765.5px; top: 511px; min-width: 1px; min-height: 1px;" data-name="image-bd7969" data-block-id="7409f75871554ca041a57d98d33e88d4"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="800" data-natural-height="800" data-lazy-loaded="" data-src="minimal-4205fa/b358d56523c434e04b9cc4702bb5b959.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 241px; left: 734px; top: 468px;" data-name="text-c00ddb" data-block-id="a569c04c78e0142e9f9870e06ccadddd"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p><span style="font-size:0.7em"><strong>Our GitHub code</strong></span></p></div></div></section><section data-id="8d338688e60c66332d799307120da9e0"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="36f7136df724826914f151f9f5d87a91"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="639.4" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="639.4" height="1" viewbox="0 0 639.4 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="639.4" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="639.4" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="9d572b6adcdff8d238f35760f7218772"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Additional experiments:  other degrees as proxy</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 837.182px; height: 597px; left: 37px; top: 79px; min-width: 1px; min-height: 1px;" data-name="image-b42e40" data-block-id="64ef8c3cbcec893ba35fbbaf0d0fb5af"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="969" data-natural-height="691" data-lazy-loaded="" data-src="minimal-4205fa/fed3ee6b1ee06466cc3bff4af056aad6.png"></div></div></section><section data-id="d27082de2250895c12b361a7839cc28a"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="88f962b51b62779456b89a96cda6e189"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="579.4" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="579.4" height="1" viewbox="0 0 579.4 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="579.4" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="579.4" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="c85200c9d483ca842f90d63d27eaf1ac"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Additional experiments: transport networks</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 806.398px; height: 163.617px; left: 50.801px; top: 127.192px; min-width: 1px; min-height: 1px;" data-name="image-398e9f" data-block-id="86ba0190a9aefd2d07fa5f503e634a76"><div class="sl-block-content" style="z-index: 12;"><img class="" data-natural-width="828" data-natural-height="168" data-lazy-loaded="" data-src="minimal-4205fa/9ac255b1d971af40472f4058499d8269.png"></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 260px; left: 66.7px; top: 79px;" data-name="text-b00ba1" data-block-id="b4c3910dcfe064e8fd5910a3400527fa"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 13;"><p>[Kujala et al. (2018)]</p></div></div>
+<div class="sl-block" data-block-type="image" style="width: 816.712px; height: 158.388px; left: 71.644px; top: 350px; min-width: 1px; min-height: 1px;" data-name="image-3acd9a" data-block-id="aa3c9a613354b5d7739d0b7333a777da"><div class="sl-block-content" style="z-index: 14;"><img class="" data-natural-width="1088" data-natural-height="211" data-lazy-loaded="" data-src="minimal-4205fa/6c3a1d7e0dad9a3097d688b54f193782.png"></div></div></section><section data-id="55af264a128d9ffaf8f60accd7d1dc43"><div class="sl-block" data-block-type="line" style="width: auto; height: auto; left: 37px; top: 67px;" data-name="line-1fbba7" data-block-id="5cc5d69c77afd415acfd5b766e4403ab"><div class="sl-block-content" data-line-x1="0" data-line-y1="0" data-line-x2="579.4" data-line-y2="0" data-line-color="#ff9900" data-line-start-type="none" data-line-end-type="none" style="z-index: 10;" data-line-width="4px"><svg xmlns="http://www.w3.org/2000/svg" version="1.1" preserveaspectratio="xMidYMid" width="579.4" height="1" viewbox="0 0 579.4 1"><line stroke="rgba(0,0,0,0)" stroke-width="15" x1="0" y1="0" x2="579.4" y2="0"></line><line class="line-element" stroke="#ff9900" stroke-width="4" x1="0" y1="0" x2="579.4" y2="0"></line></svg></div></div>
+<div class="sl-block" data-block-type="text" style="height: auto; width: 712px; left: 37px; top: 20px;" data-name="text-64cb14" data-block-id="04b68802f3fddc2f1fb144050d801da5"><div class="sl-block-style" style="z-index: 11; transform: rotate(0deg);"><div class="sl-block-content" data-placeholder-tag="p" data-placeholder-text="Text" style="z-index: 11;"><p style="text-align:left"><strong>Additional experiments: transport networks</strong></p></div></div></div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+<div class="sl-block" data-block-type="image" style="width: 783.288px; height: 169.465px; left: 55.644px; top: 105.908px; min-width: 1px; min-height: 1px;" data-name="image-4e4c62" data-block-id="3ea8d799e35ac6d52eb18eccf59742a4"><div class="sl-block-content" style="z-index: 15;"><img class="" data-natural-width="1003" data-natural-height="217" data-lazy-loaded="" data-src="minimal-4205fa/bfb8a244354013a25b6fef80373c90ad.png"></div></div>
+<div class="sl-block" data-block-type="image" style="width: 699.274px; height: 187.61px; left: 113px; top: 362.938px; min-width: 1px; min-height: 1px;" data-name="image-4e2419" data-block-id="c1cf40bec722ac753cca68661060e158"><div class="sl-block-content" style="z-index: 16;"><img class="" data-natural-width="779" data-natural-height="209" data-lazy-loaded="" data-src="minimal-4205fa/770f548d4b2b54d204ac0c12f94b7c75.png"></div></div></section>
+			</div>
+		</div>
+
+		<script>
+			var SLConfig = {"deck": {"id":2633215,"slug":"minimal-4205fa","title":"SEA2023","description":"","width":960,"height":700,"margin":0.05,"visibility":"all","published_at":"2023-07-20T11:00:58.629Z","sanitize_messages":null,"thumbnail_url":"https://s3.amazonaws.com/media-p.slid.es/thumbnails/c0da6a15cd65d1692140e41d55a16952/thumb.jpg?1689958730","view_count":10,"user":{"id":2309334,"username":"antoniocruciani","name":"Antonio Cruciani","description":null,"thumbnail_url":"https://lh3.googleusercontent.com/a/AEdFTp7TyvX3s5Cz9jsNsUnM58xETNaayqCiFYE1Jsou=s96-c","account_type":"lite","team_id":null,"settings":{"id":56899535,"present_controls":true,"present_upsizing":true,"present_pointer":false,"present_notes":true,"default_deck_tag_id":null}},"background_transition":"fade","transition":"slide","theme_id":null,"theme_font":"overpass2","theme_color":"white-blue","auto_slide_interval":0,"comments_enabled":false,"forking_enabled":true,"rolling_links":false,"center":false,"shuffle":false,"should_loop":false,"share_notes":false,"slide_number":true,"slide_count":25,"rtl":false,"version":2,"collaborative":true,"deck_user_editor_limit":1,"data_updated_at":1690229268942,"font_typekit":null,"font_google":null,"time_limit":null,"navigation_mode":"default","upsizing_enabled":true,"language":"en","notes":{}}};
+
+
+			// Use local fonts
+			SLConfig.fonts_url = 'lib/fonts/';
+		</script>
+
+		<script src="lib/reveal.js"></script>
+		<script src="lib/reveal-plugins.js"></script>
+		<script src="lib/offline.js"></script>
+
+		<!-- Initialize the presentation -->
+		<script>
+			Reveal.initialize({
+				width: 960,
+				height: 700,
+				margin: 0.05,
+				
+
+				hash: true,
+				controls: true,
+				progress: true,
+				mouseWheel: false,
+				showNotes: false,
+				slideNumber: true,
+				fragmentInURL: true,
+
+				autoSlide: 0,
+				autoSlideStoppable: true,
+
+				autoAnimateMatcher: SL.deck.AutoAnimate.matcher,
+
+				center: false,
+				shuffle: false,
+				loop: false,
+				rtl: false,
+				navigationMode: "default",
+
+				transition: "slide",
+				backgroundTransition: "fade",
+
+				highlight: {
+					escapeHTML: false
+				},
+
+				plugins: [ RevealZoom, RevealNotes, RevealMarkdown, RevealHighlight ]
+			});
+		</script>
+
+		
+
+	</body>
+</html>
