@@ -1,169 +1,355 @@
 <!DOCTYPE html>
-<!--
-    Plain-Academic by Vasilios Mavroudis
-    Released under the Simplified BSD License/FreeBSD (2-clause) License.
-    https://github.com/mavroudisv/plain-academic
--->
-
 <html lang="en">
 <head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Antonio Cruciani</title>
-  <meta charset="utf-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/css/bootstrap.min.css">
-  <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
-  <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.6/js/bootstrap.min.js"></script>
-  <link href='https://fonts.googleapis.com/css?family=Oswald:700' rel='stylesheet' type='text/css'>
+  <style>
+    html {
+      scroll-behavior: smooth;
+    }
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    nav {
+      background: #222;
+      color: white;
+      padding: 1em;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+    }
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-direction: row;
+      justify-content: center;
+      gap: 1em;
+      margin: 0;
+      padding: 0;
+    }
+    nav a {
+      color: white;
+      text-decoration: none;
+    }
+    .menu-toggle {
+      display: none;
+      background: #444;
+      border: none;
+      color: white;
+      padding: 0.5em 1em;
+      cursor: pointer;
+    }
+    section {
+      padding: 4em 2em;
+      max-width: 1000px;
+      margin: auto;
+      display: none;
+    }
+    section.active {
+      display: block;
+    }
+    footer {
+      background: #222;
+      color: white;
+      text-align: center;
+      padding: 1em;
+    }
+    @media (max-width: 600px) {
+      nav ul {
+        flex-direction: column;
+        display: none;
+        gap: 0;
+        text-align: center;
+      }
+      nav ul.active {
+        display: flex;
+      }
+      .menu-toggle {
+        display: block;
+        margin: auto;
+      }
+    }
+  </style>
 </head>
 <body>
+  <nav>
+    <button class="menu-toggle">Menu</button>
+    <ul>
+      <li><a href="#about">About</a></li>
+      <li><a href="#projects">Projects</a></li>
+      <li><a href="#publications">Publications</a></li>
+      <li><a href="#cv">CV</a></li>
+      <li><a href="#talks">Talks</a></li>
+      <li><a href="#code">Code</a></li>
 
+      <li><a href="#teaching">Teaching</a></li>
 
-<!-- Navigation -->
-	<nav class="navbar navbar-inverse navbar-static-top" role="navigation">
-	  <div class="container">
-		<div class="navbar-header">
-		  <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#bs-example-navbar-collapse-1">
-						<span class="sr-only">Toggle navigation</span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-						<span class="icon-bar"></span>
-					</button>
-		</div>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </nav>
 
-		<!-- Collect the nav links, forms, and other content for toggling -->
-		<div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
-		  <ul class="nav navbar-nav">
-				  <li><a href="index.html">Home</a></li>
-                  <li><a href="research.html">Research</a></li> 
-                  <li><a href="talks.html">Talks</a></li> 
-                  <li><a href="projects.html">Projects</a></li> 
-                  <li><a href="code.html">Code</a></li> 
-                  <li><a href="cv.html">CV</a></li> 
-                  <li><a href="teachings.html">Teachings</a></li> 
+  <section id="about" class="active">
+        <p>  <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Antonio Cruciani</b></div><br>
 
+    <div style="display: flex; flex-wrap: wrap; align-items: center; gap: 2em;">
+    <img src="photo.png" alt="Antonio Cruciani" style="max-width: 300px; border-radius: 8px;">
+   </div>
+    <h2>About Me</h2>
+    <p>
+        I am a postdoctoral researcher in Computer Science at Aalto University working in Jukka Suomela's Distributed Algorithms <a href="https://research.cs.aalto.fi/da/">group</a>.
+        I earned my PhD in Computer Science from <a href="https://sites.google.com/gssi.it/csgssi">Gran Sasso Science Institute</a> (Italy) and I was supervised by <a href="https://www.mat.uniroma2.it/~pasquale/">Francesco Pasquale</a> and co-supervised by <a href="https://www.pilucrescenzi.it/">Pierluigi Crescenzi</a> 
+    </p>
+    <p>
+     My research is focused on 
 
+      <ul>
+            <li>Distributed Computing with emphasis on three models: 
+              <strong>Dynamic Network with Churn</strong>, <strong>Node Capacitated Clique</strong> and  <strong>CONGEST</strong>.</li>
+            <li>Approximation Algorithms with emphasis on <strong>randomized algorithms</strong>. In particular for graph mining problems in static and temporal graphs.</li>
+      </ul> 
+    </p>
 
-		  </ul>
-		</div>
-	  </div>
-	</nav>
-  
-  <!-- Page Content -->
-    <div class="container">
-        <div class="row">
-            <div class="col-md-8" style="height: 45vh;">
-                <img class="img-responsive" src="photo.png" width="300" height="300" alt=""><br>
+    <hr color ="black">
 
-            </div>
-            <!-- Contact Info on the Sidebar -->
-            <div class="col-md-4">
-                <div style="font-family: 'Oswald', sans-serif; font-size: 32px;"><b>Antonio Cruciani</b></div><br>
-                <p><b>#name.#surname AT aalto.fi</b><br>
-                <b><a href="antonio_cruciani.asc">OpenPGP</a></b> (#name.#surname AT gssi.it)<br>
-                <p>Computer Science<br>
-                Aalto University<br>
-                Tietotekniikantalo, Konemiehentie 2<br>
-                Espoo<br>
-                Finland<br>
-                </p>
-            </div>
-            
-            
-            <!-- Links on the Sidebar -->
-            <div class="col-md-4" style="margin-top:2%">
-              <dd><a href="https://dblp.org/pid/249/5159">dblp</a></dd> 
-              <dd><a href="https://github.com/Antonio-Cruciani">Github</a></dd>
-              <dd><a href="https://linkedin.com/in/antonio-cruciani-9b7b7083">LinkedIn</a></dd>
-            </div>
-        </div>
+      <h2>News</h2>
 
-        <div class="row">
+        <ul>
+          <li><strong><u> March 2025:</u> </strong> I successfully defended my PhD, and I am starting a new position as a postdoctoral researcher at Aalto University.</li>
+          <li><strong><u> August 2024:</u> </strong> I joined again <a href="http://www.cse.iitm.ac.in/~augustine/">John Augustine</a> at <a href="http://www.cse.iitm.ac.in">IIT Madras</a> to work on Dynamic Networks with Churns.</li>
+          <li><strong><u> June 2024:</u> </strong> My research paper <a href="https://arxiv.org/abs/2304.08356">MANTRA: Temporal Betweenness Centrality Approximation through Sampling</a> has been accepted at <a href="https://ecmlpkdd.org/2024/">ECML-PKDD 2024</a>!</li>
 
-            <!-- Entries Column -->
-            <div class="col-md-8" style="height:30vh;">
+          <li><strong><u> August 2023:</u> </strong> I joined <a href="http://www.cse.iitm.ac.in/~augustine/">John Augustine</a> at <a href="http://www.cse.iitm.ac.in">IIT Madras</a> to work on Dynamic Networks with Churns.</li>
+       
+        </ul>
+       
+     
+    
+<hr color ="black">
+
+  </section>
+
+  <section id="projects">
+    <h2>Projects</h2>
+    <strong>Ongoing</strong><br/>
                 
-                 <table>
-                    <tr>
-                    <th><h3> About </h3></th>
-                    </tr>
-                    <tr> 
-                        <td>
-                        <p>
-                        I am a postdoctoral researcher in Computer Science at Aalto University working in Jukka Suomela's Distributed Algorithms <a href="https://research.cs.aalto.fi/da/">group</a>.
+        <ul>
 
-                        I earned my PhD in Computer Science from <a href="https://sites.google.com/gssi.it/csgssi">Gran Sasso Science Institute</a> (Italy) and I was supervised by <a href="https://www.mat.uniroma2.it/~pasquale/">Francesco Pasquale</a> and co-supervised by <a href="https://www.pilucrescenzi.it/">Pierluigi Crescenzi</a> 
-                      </p>
+         <li class="project" words="overlay, p2p"> Fast construction of overlay networks. With  <a href="https://sites.google.com/view/saumitr/home"> Manish Kumar</a>, and <a href="https://cystar.iitm.ac.in/soumyottam-chatterjee-inner-people/"> Soumyottam Chatterjee </a>.</li>
 
-                      <p>
-                       My research is focused on 
+        <li class="project" words="dynamic-graphs, churns">Dynamic Networks with Churn. With <a href="http://www.cse.iitm.ac.in/~augustine/">John Augustine</a> and <a href="https://scholar.google.com/citations?user=_Hrr2XgAAAAJ&hl=en">Thorsten Götte</a> </li>
 
-                        <ul>
-                              <li>Distributed Computing with emphasis on three models: 
-                                <strong>Dynamic Network with Churn</strong>, <strong>Node Capacitated Clique</strong> and  <strong>CONGEST</strong>.</li>
-                              <li>Approximation Algorithms with emphasis on <strong>randomized algorithms</strong>. In particular for graph mining problems in static and temporal graphs.</li>
-                        </ul> 
+         <li class="project" words="graph-mining, centrality"> Efficient graph mining algorithms. With  <a href="http://www.dei.unipd.it/~pellegri/">Leonardo Pellegrina</a>.</li>
 
-                      </p>
-                        <hr color ="black">
+        <li class="project" words="anonymus-graphs, congested">Computations on anonymus congested graphs. With  <a href="http://www.cse.iitm.ac.in/~augustine/">John Augustine</a>,<a href="https://dds.technion.ac.il/academicstaff/shay-kutten/"> Shay Kutten</a>,<a href="https://www.weizmann.ac.il/math/peleg/"> David Peleg</a> and <a href="https://sites.google.com/view/saumitr/home"> Manish Kumar</a></li>
 
-                  </td>
-                    </tr>
-                    <tr>
-                    <th><h3> News </h3>(<a href="news.html">see all news</a>)</th>
-                    </tr>
-
-                    <tr> 
-						<td>
-                             <p>
-                                <strong><u> March 2025:</u> </strong> I successfully defended my PhD, and I am starting a new position as a postdoctoral researcher at Aalto University.
-                            </p>
-                            <p>
-                                <strong><u> August 2024:</u> </strong> I joined again <a href="http://www.cse.iitm.ac.in/~augustine/">John Augustine</a> at <a href="http://www.cse.iitm.ac.in">IIT Madras</a> to work on Dynamic Networks with Churns.
-                            </p>
-                            <p>
-                                <strong><u> June 2024:</u> </strong> My research paper <a href="https://arxiv.org/abs/2304.08356">MANTRA: Temporal Betweenness Centrality Approximation through Sampling</a> has been accepted at <a href="https://ecmlpkdd.org/2024/">ECML-PKDD 2024</a>!
-                            </p>
-							<hr color ="black">
-
-                    	</td>
-                    </tr>
-
-                    <tr>
-                    <th><h3> Family </h3></th>
-                    </tr>
-                    <tr> 
-                        <td> My <a href="https://getsomefajitas.github.io/afatikhova.github.io/index.html">wife</a> is an economist!</td>
-                    </tr>
-
-
-                 </table>
-         
-            </div> 
-
-
-
-            
-            
-            
-
-
-            
-        </div>
+        <li class="project" words="dynamic-graphs, estimation">Bioinspired distributed protocols on dynamic networks. With  <a href="http://www.cse.iitm.ac.in/~augustine/">John Augustine</a>,<a href="https://dds.technion.ac.il/academicstaff/shay-kutten/"> Shay Kutten</a>, and <a href="https://yemek.net.technion.ac.il/">Yuval Emek</a>.</li>
 
         
 
-
-        </div>
-
         
+        <li class="project" words="centrality, approximation"> Fast Estimation of geometric centralities on very large graphs With: <a href="https://dblp.org/pid/a/GianniAmati">Giambattista Amati</a>, <a href="https://dblp.org/pid/58/5877">Paola Vocca</a>, <a href="https://www.linkedin.com/in/simone-angelini/">Simone Angelini</a>, <a href="https://www.linkedin.com/in/dpasquini/">Daniele Pasquini</a></li>
+        
+        
+        <li class="project" words="dynamic-graph, p2p, network,dynamic network"> Computations on anonymous P2P Networks.</a> with: <a href="https://www.mat.uniroma2.it/~pasquale/">Francesco Pasquale</a> </li>
+        
+        </ul>
+          <hr color ="black">
 
-    </div>
-    <!-- /.container -->
-    
-    <!-- Other people may like it too! -->
+        <strong>Past</strong><br/>
+        <ul>
 
-   <!-- <a style="color:#b5bec9;font-size:0.8em; float:right;" href="https://github.com/mavroudisv/plain-academic">Plain Academic</a> -->
-    
+            <li class="project" words="dynamic-graphs, churns, datastructure">Dynamic Networks with Churn. With <a href="http://www.cse.iitm.ac.in/~augustine/">John Augustine</a> and <a href="https://sites.google.com/nitsri.net/iqraaltaf">Iqra Altaf Gillani</a> </li>
+
+            <li class="project" words="temporal-graphs, graph-mining, generators">Models, Generator and Graph Mining Algorithms for Time Dependent Graphs. With: Francesco Pasquale, Pierluigi Crescenzi</li>
+
+            <li class="project" words="diameter, approximation, MinHash"><a href="https://github.com/BigDataLaboratory/MHSE">Estimation of distance-based metrics for very large graphs with MinHash Signatures</a> With: <a href="https://dblp.org/pid/a/GianniAmati">Giambattista Amati</a>, <a href="https://dblp.org/pid/58/5877">Paola Vocca</a>, <a href="https://www.linkedin.com/in/simone-angelini/">Simone Angelini</a>, <a href="https://www.linkedin.com/in/dpasquini/">Daniele Pasquini</a></li>
+
+            <li class="project" words="dynamic-graph, p2p, bitcoin, network,dynamic network"><a href="https://github.com/Antonio-Cruciani/dynamic-random-graph-generator">Simple dynamic random graph models</a> with: <a href="https://www.mat.uniroma2.it/~pasquale/">Francesco Pasquale</a> </li>
+
+            <li>Topic modeling by community detection algorithms</li> with: <a href="https://dblp.org/pid/a/GianniAmati">Giambattista Amati</a>, <a href="https://dblp.org/pid/58/5877">Paola Vocca</a>, <a href="https://www.linkedin.com/in/simone-angelini/">Simone Angelini</a>, <a href="https://www.linkedin.com/in/dpasquini/">Daniele Pasquini</a>
+        </ul>
+     <hr color ="black">
+  </section>
+
+  <section id="publications">
+    <h2>Publications</h2>
+    <strong> PhD Thesis </strong>
+    <ul>
+        <li class="phd_thesis" words="graph-mining, temporal-graphs, betweenness,dynamic networks with churn,distributed computing"><a href="other/phd_thesis/phd_thesis_antonio_cruciani_after_reviews.pdf">Models and Algorithms for Temporal Betweenness Centrality and Dynamic Distributed Data Structures</a>. <a href="presentations/thesis/phd_defense.html">Slides</a>
+    </ul>
+      <hr color ="black">
+      <strong> Conferences </strong>
+
+      <ul>
+        <li class="paper" words="graph-mining, temporal-graphs, betweenness"> MANTRA: Temporal Betweenness Centrality Approximation through Sampling (ECML-PKDD 2024)<a href="https://arxiv.org/abs/2304.08356"> [arXiv]</a>,  <a href="https://link.springer.com/chapter/10.1007/978-3-031-70341-6_8">[Conference]</a> </li> Antonio Cruciani.
+      </ul>
+      <ul>
+        <li class="paper" words="graphs, graph-mining, diameter,effective diameter, fast computation"> PROPAGATE: a seed propagation framework to compute Distance-based metrics on Very Large Graphs (ECML-PKDD 2023) <a href="https://arxiv.org/abs/2301.06499">[arXiv]</a>, <a href="https://link.springer.com/chapter/10.1007/978-3-031-43418-1_40">[Conference]</a></li> Giambattista Amati, Antonio Cruciani, Daniele Pasquini, Paola Vocca, and Simone Angelini.
+      </ul>
+      <ul>
+        <li class="paper" words="temporal-graphs, graph-mining, betweenness,approximation algorithms"> <a href="https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=18356"> Proxying Betweenness Centrality Rankings in Temporal Networks (SEA 2023) </a></li> Ruben Becker, Pierluigi Crescenzi, Antonio Cruciani, and Bojana Kodric.
+      </ul>
+      <ul>
+        <li class="paper" words="dynamic-graphs, p2p, bitcoin,flooding,Nature-Inspired Computing"> <a href="https://dl.acm.org/doi/10.1145/3571306.3571398">Dynamic graph models inspired by the Bitcoin network-formation process (ICDCN 2023)</a> </li> Antonio Cruciani, Francesco Pasquale.
+      </ul>
+      <ul>
+        <li class="paper" words="dynamic-graphs, p2p, bitcoin,flooding,Nature-Inspired Computing"> <a href="https://link.springer.com/chapter/10.1007/978-3-031-21017-4_23"> Dynamic graph models for the Bitcoin P2P network: simulation analysis for expansion and flooding time. (SSS 2022)</a> </li> Antonio Cruciani, Francesco Pasquale.
+      </ul>
+   <hr color ="black">            
+   <strong> Workshops & Posters </strong>
+   <ul>
+                <li class="poster" words="dynamic-graphs, data-structures, churn"> Maintaining Distributed Data Structures in Dynamic Peer-to-Peer Networks. IIT Madras 2024 <a href="other/posters/Poster_Dynamic_Data_Structures.pdf">Poster</a></li> 
+                <li class="paper" words="Topic, modelling, community-etection"> <a href="https://www.researchgate.net/publication/354583025_Topic_modeling_by_community_detection_algorithms"> Topic modeling by community detection algorithms. (OASIS 2021)</a>  Paola Vocca, Giambattista Amati, Simone Angelini, Antonio Cruciani, Gianmarco Fusco, Giancarlo Gaudino and Daniele Pasquini </li>
+                <li class="paper" words="IIR, compression, indexing"><a href="http://ceur-ws.org/Vol-2441/paper23.pdf">About Graph Index Compression Techniques. (IIR 2019)</a> Antonio Cruciani, Daniele Pasquini, Giambattista Amati, Paola Vocca</li>
+                </ul>
+
+  <hr color ="black">         
+                <strong> Preprints </strong>
+                 <ul>
+                  <li class="paper" words="graph-mining, percolation centrality"> <a href="https://arxiv.org/abs/2408.02389">Fast Estimation of Percolation Centrality.</a> Antonio Cruciani.</li>
+                  <li class="paper" words="distributed computing, dynamic networks, data structures, churn"> <a href="https://arxiv.org/abs/2409.10235">Maintaining Distributed Data Structures in Dynamic Peer-to-Peer Networks.</a> John Augustine, Antonio Cruciani, Iqra Altaf Gillani.</li>
+                </ul>
+  </section>
+
+  <section id="cv">
+    <h2>Curriculum Vitae (<a href="antonio_cv.pdf">Full version available here</a>)</h2>
+    <strong> Education </strong>
+
+    <p>
+      <a href="http://www.gssi.it">PhD. in Computer Science. </a> March 2025.
+            <ul style="list-style-type:disc">
+               <li>Institute: <a href="https://gssi.it">Gran Sasso Science Institute</a>, l'Aquila, Italy </li>
+               <li>Thesis: <a href="other/phd_thesis/phd_thesis_antonio_cruciani_after_reviews.pdf">Models and Algorithms for Temporal Betweenness Centrality and Dynamic Distributed Data Structures</a></li>
+               <li>Supervisor: Francesco Pasquale</li>
+                <li>co-Supervisor: Pierluigi Crescenzi</li>
+
+            </ul>
+      <a href="http://www.informatica.uniroma2.it/index2.htm">M.Sc. in Computer Science. </a> February 2020.
+            <ul style="list-style-type:disc">
+               <li>Institute: <a href="https://web.uniroma2.it/">University of Rome:"Tor Vergata"</a>, Rome, Italy </li>
+               <li>Thesis:  <a href="https://github.com/Antonio-Cruciani/dynamic-random-graph-generator">Dynamic Random Graphs and unstructured P2P networks, analysis of two models inspired by the Bitcoin network.</a> </li>
+               <li>Supervisor: Francesco Pasquale</li>
+            </ul>
+
+            <a href="http://www.informatica.uniroma2.it/index.htm">B.Sc. in Computer Science. </a> October 2017.
+            <ul style="list-style-type:disc">
+               <li>Institute: <a href="https://web.uniroma2.it/">University of Rome:"Tor Vergata"</a>, Rome, Italy </li>
+               <li>Thesis: Efficient Learning methods for playlist prediction</li>    
+               <li>Supervisor: <a href="https://dblp.org/pid/14/5718">Giorgio Gambosi</a></li>
+            </ul></p>
+  </section>
+
+    <section id="talks">
+    <h2>Talks</h2>
+    <ul>
+                  <li class="paper" words="distributed-computing, data-stractures, dynamic-graphs, churn"> Maintaining Distributed Data Structures in Dynamic Peer-to-Peer Networks. IIT Madras - Aalto University (online) 2024 <a href="presentations/iitm_24_b/iitm_24_b.html">Slides</a></li> 
+                
+                    
+                  <li class="paper" words="temporal-graphs, graph-mining, betweenness, sampling"> On the Temporal Betweenness Centrality. IIT Madras 2024 <a href="presentations/iitm_24_a/iitm_24_a.html">Slides</a></li> 
+                               
+                  <li class="paper" words="temporal-graphs, graph-mining, betweenness, sampling"> MANTRA: Temporal Betweenness Centrality Approximation through Sampling. <a href="https://ecmlpkdd.org/2024/">ECML-PKDD 2024</a> <a href="presentations/ecml_pkdd_24/ecml_pkdd_24_presentation.pdf">Slides</a></li> 
+                      
+                  <li class="paper" words="graphs, graph-mining, diameter,effective diameter, fast computation"> Computing Distance-based metrics on Very Large Graphs. University of Padua 2024 <a href="presentations/ecml_pkdd_23/ecml_pkdd_23_presentation.html">Slides</a></li> 
+                
+                  <li class="paper" words="graphs, graph-mining, diameter,effective diameter, fast computation"> PROPAGATE: a seed propagation framework to compute Distance-based metrics on Very Large Graphs.<a href="https://2023.ecmlpkdd.org/">ECML-PKDD 2023</a> <a href="presentations/ecml_pkdd_23/ecml_pkdd_23_presentation.html">Slides</a></li> 
+                
+                  <li class="paper" words="temporal-graphs, graph-mining, betweenness,approximation algorithms"> Proxying Betweenness Centrality Rankings in Temporal Networks.<a href="https://myevent.upc.edu/92268/section/40805/sea-2023.html">SEA 2023</a> <a href="presentations/sea_23/sea_23_presentation.html">Slides</a></li> 
+                
+                  <li class="paper" words="dynamic-graphs, p2p, bitcoin,flooding,Nature-Inspired Computing"> Dynamic graph models inspired by the Bitcoin network-formation process.<a href="https://cse.iitkgp.ac.in/conf/ICDCN23/">ICDCN 2023</a> <a href="presentations/icdcn_23/icdcn_23_presentation.html">Slides</a></li> 
+                
+                  <li class="paper" words="dynamic-graphs, p2p, bitcoin,flooding,Nature-Inspired Computing"> Dynamic graph models for the Bitcoin P2P network: simulation analysis for expansion and flooding time. <a href="https://sss2022.limos.fr/"> SSS 2022</a>  <a href="presentations/sss_22/sss_presentation.odp">Slides</a></li> 
+                </ul>       
+  </section>
+
+
+  <section id="code">
+  <h2>Code</h2>
+  <ul>
+    <li><h4>FEPiC: Fast Estimation of Percolation Centrality. <a href="https://github.com/Antonio-Cruciani/percolation_centrality">[Code]</a></h4>
+      FEPiC is a progressive sampling based algorithm to approximate the percolation centrality of all nodes in a static graph. FEPiC uses Monte Carlo Empirical Rademacher Averages and variance aware bounds for the sample complexity to provide a high quality approximation of such a centrality measure. FEPiC extends the novel algorithm for the Betweenness Centrality by <a href="https://dl.acm.org/doi/10.1145/3628601">[Pellegrina and Vandin]</a> to the Percolation Centrality. FEPiC is the best choice in terms of sample size, running time and quality of the approximation. The Julia library includes efficient (parallel) implementation of: (i) FEPiC (see <a href="https://arxiv.org/abs/2408.02389">[arXiv]</a> for the original paper); (ii) the progressive sampling algorithm by <a href="https://www.sciencedirect.com/science/article/pii/S0166218X21002821?via%3Dihub">[Lima et al.]</a>; (iii) the fixed sample size algorithm by <a href="https://dl.acm.org/doi/10.1145/3394486.3403235">[Lima et al.]</a>; and, an efficient version of the exact algorithm for the percolation centrality. All the algorithms use multithreading and outperform the already existing NetworkX implementations.
+    </li>
+    <li><h4>MANTRA: Temporal Betweenness Centrality Approximation through Sampling. <a href="https://github.com/Antonio-Cruciani/MANTRA">[Code]</a></h4>
+      MANTRA is a progressive sampling based algorithm to approximate the temporal betweenness centrality of all nodes in a temporal graph. MANTRA uses Monte Carlo Empirical Rademacher Averages and variance aware results on sample complexity to provide a high quality approximation of the Shortest (Foremost) and Prefix Foremost Temporal Betweenness centralities <a href="https://dl.acm.org/doi/10.1145/3394486.3403259">[Buß et al.]</a>. MANTRA is the best choice in terms of sample size, running time, and required space (linear in the size of the temporal graph) to provide high quality approximations. The library includes algorithms for computing temporal edge centrality, temporal diameter, average path length, and connectivity rate. See <a href="https://arxiv.org/abs/2304.08356">[arXiv]</a>.
+    </li>
+    <li><h4>PROPAGATE: a seed propagation framework to compute Distance-based metrics on Very Large Graphs. <a href="https://github.com/BigDataLaboratory/MHSE">[Code]</a></h4>
+      PROPAGATE is a sampling based algorithm to approximate all the distance-based metrics (diameter, effective diameter, average distance, number of reachable pairs, connectivity rate, and geometric centralities). The Java library includes two efficient approximation algorithms (see <a href="https://arxiv.org/abs/2301.06499">[arXiv]</a>). PROPAGATE is the best choice in terms of running time and required space.
+    </li>
+    <li><h4>TSBProxy: Temporal Shortest Betweenness Proxy. <a href="https://github.com/Antonio-Cruciani/TSBProxy">[Code]</a></h4>
+      TSBProxy is a suite of proxies for Temporal Shortest Betweenness Centrality. It includes Julia implementations of the Shortest and Prefix Foremost Betweenness algorithms <a href="https://dl.acm.org/doi/10.1145/3394486.3403259">[Buß et al.]</a>, ONBRA <a href="https://dl.acm.org/doi/10.1145/3485447.3512204">[Santoro et al.]</a>, and a novel temporal degree proxy.
+    </li>
+    <li><h4>DREG: Dynamic Random Expander Generator. <a href="https://github.com/Antonio-Cruciani/DREG-DynamicRandomExpanderGenerator/tree/master">[Code]</a></h4>
+      DREG is a Python implementation of a generator for almost regular dynamic random graphs that are expanders at each time step with high probability.
+    </li>
+  </ul>
+</section>
+  
+  <section id="teaching">
+    <h2>Teaching</h2>
+    <p><strong>Academic Year 2018-2019 (Italian)</strong>
+      <ul>
+      <li class="teachings" words="theoretical computer science">Theoretical Computer science - Exercise sessions, <a href="https://github.com/Antonio-Cruciani/Esercitazioni-Informatica-Teorica">exercises</a></li>
+      <li>Institute: University of Rome: "Tor Vergata"</li>
+      </ul>
+      <strong>Academic Year 2017-2018 (Italian)</strong>
+      <ul>
+      <li class="teachings" words=" computer programming ">Computer Programming - Excercise sessions.</li>
+      <li>Institute: University of Rome: "Tor Vergata"</li>
+
+      </ul>
+  </p>
+  </section>
+
+  <section id="contact">
+    <h2>Contact</h2>
+  <p><b>antonio.cruciani AT aalto.fi</b><br>
+  <b><a href="antonio_cruciani.asc">OpenPGP</a></b> (antonio.cruciani AT gssi.it)<br></p>
+  <p>Computer Science<br>
+  Aalto University<br>
+  Tietotekniikantalo, Konemiehentie 2, room number B313<br>
+  Espoo<br>
+  Finland<br>
+  </p></p>
+  </section>
+
+
+  <footer>
+    <p>&copy; 2025 Antonio Cruciani</p>
+  </footer>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', function() {
+      const sections = document.querySelectorAll('section');
+      const navLinks = document.querySelectorAll('nav a');
+      const menuToggle = document.querySelector('.menu-toggle');
+      const navList = document.querySelector('nav ul');
+
+      function showSection(id) {
+        sections.forEach(section => {
+          section.classList.toggle('active', section.id === id);
+        });
+      }
+
+      navLinks.forEach(link => {
+        link.addEventListener('click', function(event) {
+          event.preventDefault();
+          const targetId = this.getAttribute('href').substring(1);
+          showSection(targetId);
+          if (navList.classList.contains('active')) {
+            navList.classList.remove('active');
+          }
+        });
+      });
+
+      menuToggle.addEventListener('click', () => {
+        navList.classList.toggle('active');
+      });
+
+      // Show first section by default
+      showSection('about');
+    });
+  </script>
 </body>
-
 </html>
