@@ -72,6 +72,34 @@
         margin: auto;
       }
     }
+
+    .year-divider {
+  display: flex;
+  align-items: center;
+  text-align: center;
+  margin: 2em 0; /* spacing above/below */
+  font-weight: bold;
+  font-family: sans-serif;
+}
+
+.year-divider::before,
+.year-divider::after {
+  content: "";
+  flex: 1;
+  border-bottom: 1px solid black;
+}
+
+.year-divider:not(:empty)::before {
+  margin-right: 0.75em;
+}
+
+.year-divider:not(:empty)::after {
+  margin-left: 0.75em;
+}
+
+.year-divider span {
+  padding: 0 0.5em;
+}
   </style>
 </head>
 <body>
@@ -179,7 +207,9 @@
     </ul>
       <hr color ="black">
       <strong> Conferences </strong>
-
+      <div class="year-divider">
+      <span>2025</span>
+      </div>
       <ul>
         <li class="paper" words="graph mining, algorithms,sampling, imporance-sampling, centrality"> Fast Percolation Centrality Approximation with Importance Sampling. (ICDM 2025 - To appear) Antonio Cruciani and Leonardo Pellegrina.</li>
       </ul>
@@ -194,10 +224,17 @@
       <ul>
         <li class="paper" words="distributed computing, quantum, computational complexity"> <a href="https://www.arxiv.org/abs/2506.07574">New Limits on Distributed Quantum Advantage: Dequantizing Linear Programs. (DISC 2025 - To appear)</a> Alkida Balliu, Corinna Coupette, Antonio Cruciani, Francesco d'Amore, Massimo Equi, Henrik Lievonen, Augusto Modanese, Dennis Olivetti, Jukka Suomela.</li>
       </ul>
+       <div class="year-divider">
+      <span>2024</span>
+      </div>
 
       <ul>
         <li class="paper" words="graph-mining, temporal-graphs, betweenness"> MANTRA: Temporal Betweenness Centrality Approximation through Sampling (ECML-PKDD 2024)<a href="https://arxiv.org/abs/2304.08356"> [arXiv]</a>,  <a href="https://link.springer.com/chapter/10.1007/978-3-031-70341-6_8">[Conference]</a> </li> Antonio Cruciani.
       </ul>
+       <div class="year-divider">
+      <span>2023</span>
+      </div>
+
       <ul>
         <li class="paper" words="graphs, graph-mining, diameter,effective diameter, fast computation"> PROPAGATE: a seed propagation framework to compute Distance-based metrics on Very Large Graphs (ECML-PKDD 2023) <a href="https://arxiv.org/abs/2301.06499">[arXiv]</a>, <a href="https://link.springer.com/chapter/10.1007/978-3-031-43418-1_40">[Conference]</a></li> Giambattista Amati, Antonio Cruciani, Daniele Pasquini, Paola Vocca, and Simone Angelini.
       </ul>
@@ -207,6 +244,10 @@
       <ul>
         <li class="paper" words="dynamic-graphs, p2p, bitcoin,flooding,Nature-Inspired Computing"> <a href="https://dl.acm.org/doi/10.1145/3571306.3571398">Dynamic graph models inspired by the Bitcoin network-formation process (ICDCN 2023)</a> </li> Antonio Cruciani, Francesco Pasquale.
       </ul>
+       <div class="year-divider">
+      <span>2022</span>
+      </div>
+
       <ul>
         <li class="paper" words="dynamic-graphs, p2p, bitcoin,flooding,Nature-Inspired Computing"> <a href="https://link.springer.com/chapter/10.1007/978-3-031-21017-4_23"> Dynamic graph models for the Bitcoin P2P network: simulation analysis for expansion and flooding time. (SSS 2022)</a> </li> Antonio Cruciani, Francesco Pasquale.
       </ul>
