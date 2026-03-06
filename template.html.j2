@@ -1,0 +1,488 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{{ site.title or owner.name or "Personal Website" }}</title>
+  <meta name="description" content="{{ site.description or '' }}">
+  <style>
+    :root {
+      --text: #1f2937;
+      --muted: #6b7280;
+      --line: #e5e7eb;
+      --bg: #ffffff;
+      --nav-bg: #111827;
+      --nav-text: #f9fafb;
+      --link: #1d4ed8;
+      --maxw: 980px;
+    }
+
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      color: var(--text);
+      background: var(--bg);
+      line-height: 1.6;
+    }
+
+    a { color: var(--link); text-decoration: none; }
+    a:hover { text-decoration: underline; }
+
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      background: var(--nav-bg);
+      color: var(--nav-text);
+      padding: 1rem;
+    }
+
+    nav .nav-inner {
+      max-width: var(--maxw);
+      margin: 0 auto;
+    }
+
+    nav ul {
+      list-style: none;
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 1rem;
+      margin: 0;
+      padding: 0;
+    }
+
+    nav a { color: var(--nav-text); }
+
+    .menu-toggle {
+      display: none;
+      background: #374151;
+      color: white;
+      border: 0;
+      padding: 0.5rem 0.9rem;
+      cursor: pointer;
+      margin: 0 auto 0.75rem auto;
+    }
+
+    main {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 2rem 1.25rem 4rem 1.25rem;
+    }
+
+    section {
+      padding: 2rem 0;
+      border-bottom: 1px solid var(--line);
+    }
+
+    section:last-child { border-bottom: none; }
+
+    h1 { margin: 0 0 0.5rem 0; font-size: 2.1rem; }
+    h2 { margin: 0 0 1rem 0; font-size: 1.6rem; }
+    h3 { margin: 1.25rem 0 0.5rem 0; font-size: 1.15rem; }
+
+    .hero {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1.5rem;
+      align-items: flex-start;
+    }
+
+    .hero img {
+      max-width: 260px;
+      width: 100%;
+      border-radius: 10px;
+      height: auto;
+    }
+
+    .muted { color: var(--muted); }
+
+    ul.clean {
+      margin: 0;
+      padding-left: 1.2rem;
+    }
+
+    .year-divider {
+      display: flex;
+      align-items: center;
+      text-align: center;
+      margin: 1.7rem 0 0.8rem 0;
+      font-weight: bold;
+    }
+
+    .year-divider::before,
+    .year-divider::after {
+      content: "";
+      flex: 1;
+      border-bottom: 1px solid #9ca3af;
+    }
+
+    .year-divider span { padding: 0 0.8rem; }
+
+    .entry { margin-bottom: 0.9rem; }
+    .entry:last-child { margin-bottom: 0; }
+    .title-line { font-weight: 600; }
+    .meta { color: var(--muted); }
+    .links a { margin-right: 0.6rem; white-space: nowrap; }
+
+    .contact-list {
+      list-style: none;
+      padding-left: 0;
+      margin: 0;
+    }
+
+    .contact-list li { margin-bottom: 0.65rem; }
+
+    footer {
+      max-width: var(--maxw);
+      margin: 0 auto;
+      padding: 0 1.25rem 2rem 1.25rem;
+      color: var(--muted);
+      font-size: 0.95rem;
+    }
+
+    @media (max-width: 700px) {
+      nav ul {
+        display: none;
+        flex-direction: column;
+        align-items: center;
+      }
+
+      nav ul.active { display: flex; }
+      .menu-toggle { display: block; }
+    }
+  </style>
+</head>
+<body>
+  <nav>
+    <div class="nav-inner">
+      <button class="menu-toggle" type="button">Menu</button>
+      <ul>
+        {% for item in navigation %}
+          <li><a href="#{{ item.id }}">{{ item.label }}</a></li>
+        {% endfor %}
+      </ul>
+    </div>
+  </nav>
+
+  <main>
+    <section id="about">
+      <div class="hero">
+        <div>
+          <h1>{{ owner.name }}</h1>
+          {% if owner.position %}<div class="muted">{{ owner.position }}</div>{% endif %}
+          {% if owner.affiliation %}<div class="muted">{{ owner.affiliation }}</div>{% endif %}
+          {% if owner.group.name %}
+            <div class="muted">
+              {% if owner.group.url %}<a href="{{ owner.group.url }}">{{ owner.group.name }}</a>{% else %}{{ owner.group.name }}{% endif %}
+            </div>
+          {% endif %}
+          {% if owner.email %}<div class="muted">{{ owner.email }}</div>{% endif %}
+        </div>
+        {% if owner.photo %}
+          <img src="{{ owner.photo }}" alt="{{ owner.name }}">
+        {% endif %}
+      </div>
+
+      {% for paragraph in bio.paragraphs %}
+        <p>{{ paragraph | render_people_text | safe }}</p>
+      {% endfor %}
+
+      {% if bio.interests %}
+        <h3>Research Interests</h3>
+        <ul class="clean">
+          {% for item in bio.interests %}
+            <li>{{ item | render_people_text | safe }}</li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if news %}
+        <h3>News</h3>
+        <ul class="clean">
+          {% for item in news %}
+            <li>
+              {% if item.date %}<strong>{{ item.date }}</strong>: {% endif %}
+              {{ item.text | render_people_text | safe }}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+
+    <section id="publications">
+      <h2>Publications</h2>
+
+      {% if publications.thesis %}
+        <h3>Thesis</h3>
+        <div class="entry">
+          <div class="title-line">{{ publications.thesis.title }}</div>
+          {% if publications.thesis.authors %}
+            <div class="meta">
+              {% for a in publications.thesis.authors %}
+                {% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% if publications.thesis.description %}<div>{{ publications.thesis.description | render_people_text | safe }}</div>{% endif %}
+          {% if publications.thesis.links %}
+            <div class="links">
+              {% for link in publications.thesis.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endif %}
+
+      {% if publications.conferences %}
+        <h3>Conferences</h3>
+        {% for year in _years.conferences %}
+          <div class="year-divider"><span>{{ year }}</span></div>
+          {% for pub in publications.conferences[year] %}
+            <div class="entry">
+              <div class="title-line">{{ pub.title }}</div>
+              {% if pub.venue or pub.status %}
+                <div class="meta">
+                  {% if pub.venue %}{{ pub.venue }}{% endif %}{% if pub.status %} · {{ pub.status }}{% endif %}
+                </div>
+              {% endif %}
+              {% if pub.authors %}
+                <div>
+                  {% for a in pub.authors %}
+                    {% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if pub.note %}<div>{{ pub.note | render_people_text | safe }}</div>{% endif %}
+              {% if pub.links %}
+                <div class="links">
+                  {% for link in pub.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+
+      {% if publications.workshops %}
+        <h3>Workshops and Posters</h3>
+        {% for year in _years.workshops %}
+          <div class="year-divider"><span>{{ year }}</span></div>
+          {% for pub in publications.workshops[year] %}
+            <div class="entry">
+              <div class="title-line">{{ pub.title }}</div>
+              {% if pub.venue %}<div class="meta">{{ pub.venue }}</div>{% endif %}
+              {% if pub.authors %}
+                <div>
+                  {% for a in pub.authors %}
+                    {% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}
+                  {% endfor %}
+                </div>
+              {% endif %}
+              {% if pub.links %}
+                <div class="links">
+                  {% for link in pub.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+                </div>
+              {% endif %}
+            </div>
+          {% endfor %}
+        {% endfor %}
+      {% endif %}
+
+      {% if publications.preprints %}
+        <h3>Preprints</h3>
+        {% for pub in publications.preprints %}
+          <div class="entry">
+            <div class="title-line">{{ pub.title }}</div>
+            {% if pub.authors %}
+              <div>
+                {% for a in pub.authors %}
+                  {% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+              </div>
+            {% endif %}
+            {% if pub.note %}<div class="meta">{{ pub.note | render_people_text | safe }}</div>{% endif %}
+            {% if pub.links %}
+              <div class="links">
+                {% for link in pub.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endif %}
+    </section>
+
+    <section id="talks">
+      <h2>Talks</h2>
+      {% for year in _years.talks %}
+        <div class="year-divider"><span>{{ year }}</span></div>
+        {% for talk in talks[year] %}
+          <div class="entry">
+            <div class="title-line">{{ talk.title }}</div>
+            {% if talk.event or talk.location or talk.date %}
+              <div class="meta">
+                {% if talk.event %}{{ talk.event }}{% endif %}{% if talk.location %} · {{ talk.location }}{% endif %}{% if talk.date %} · {{ talk.date }}{% endif %}
+              </div>
+            {% endif %}
+            {% if talk.description %}<div>{{ talk.description | render_people_text | safe }}</div>{% endif %}
+            {% if talk.links %}
+              <div class="links">
+                {% for link in talk.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+              </div>
+            {% endif %}
+          </div>
+        {% endfor %}
+      {% endfor %}
+    </section>
+
+    <section id="projects">
+      <h2>Projects</h2>
+
+      {% if projects.ongoing %}
+        <h3>Ongoing</h3>
+        <ul class="clean">
+          {% for item in projects.ongoing %}
+            <li>
+              <strong>{{ item.title }}</strong>{% if item.description %}. {{ item.description | render_people_text | safe }}{% endif %}
+              {% if item.collaborators %}
+                <br><span class="meta">With
+                {% for a in item.collaborators %}
+                  {% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </span>
+              {% endif %}
+              {% if item.links %}
+                <span class="links">
+                  {% for link in item.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+                </span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+
+      {% if projects.past %}
+        <h3>Past</h3>
+        <ul class="clean">
+          {% for item in projects.past %}
+            <li>
+              <strong>{{ item.title }}</strong>{% if item.description %}. {{ item.description | render_people_text | safe }}{% endif %}
+              {% if item.collaborators %}
+                <br><span class="meta">With
+                {% for a in item.collaborators %}
+                  {% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}
+                {% endfor %}
+                </span>
+              {% endif %}
+              {% if item.links %}
+                <span class="links">
+                  {% for link in item.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+                </span>
+              {% endif %}
+            </li>
+          {% endfor %}
+        </ul>
+      {% endif %}
+    </section>
+
+    <section id="cv">
+      <h2>CV</h2>
+      {% if cv.full_cv_url %}
+        <p><a href="{{ cv.full_cv_url }}">Full CV</a></p>
+      {% endif %}
+      {% for entry in cv.entries %}
+        <div class="entry">
+          <div class="title-line">{{ entry.title }}</div>
+          <div class="meta">
+            {% if entry.institution %}{{ entry.institution }}{% endif %}{% if entry.period %} · {{ entry.period }}{% endif %}
+          </div>
+          {% if entry.supervisors %}
+            <div>
+              {{ entry.supervisor_label }}
+              {% for a in entry.supervisors %}
+                {% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+            </div>
+          {% endif %}
+          {% if entry.description %}<div>{{ entry.description | render_people_text | safe }}</div>{% endif %}
+          {% if entry.links %}
+            <div class="links">
+              {% for link in entry.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+            </div>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </section>
+
+    <section id="code">
+      <h2>Code</h2>
+      <ul class="clean">
+        {% for item in code %}
+          <li>
+            <strong>{{ item.title }}</strong>{% if item.description %}. {{ item.description | render_people_text | safe }}{% endif %}
+            {% if item.collaborators %}
+              <br><span class="meta">With
+              {% for a in item.collaborators %}
+                {% if a.url %}<a href="{{ a.url }}">{{ a.name }}</a>{% else %}{{ a.name }}{% endif %}{% if not loop.last %}, {% endif %}
+              {% endfor %}
+              </span>
+            {% endif %}
+            {% if item.links %}
+              <span class="links">
+                {% for link in item.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+              </span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section id="teaching">
+      <h2>Teaching</h2>
+      <ul class="clean">
+        {% for item in teaching %}
+          <li>
+            <strong>{{ item.title }}</strong>{% if item.period %} ({{ item.period }}){% endif %}
+            {% if item.description %}<br>{{ item.description | safe }}{% endif %}
+            {% if item.links %}
+              <span class="links">
+                {% for link in item.links %}<a href="{{ link.url }}">[{{ link.label }}]</a>{% endfor %}
+              </span>
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+
+    <section id="contact">
+      <h2>Contacts</h2>
+      <ul class="contact-list">
+        {% for item in contacts %}
+          <li>
+            <strong>{{ item.label }}:</strong>
+            {% if item.url %}
+              <a href="{{ item.url }}">{{ item.value }}</a>
+            {% elif item.is_html %}
+              {{ item.value | safe }}
+            {% else %}
+              {{ item.value }}
+            {% endif %}
+          </li>
+        {% endfor %}
+      </ul>
+    </section>
+  </main>
+
+  {% if site.footer_text %}
+    <footer>{{ site.footer_text }}</footer>
+  {% endif %}
+
+  <script>
+    const button = document.querySelector('.menu-toggle');
+    const menu = document.querySelector('nav ul');
+    if (button && menu) {
+      button.addEventListener('click', () => menu.classList.toggle('active'));
+    }
+  </script>
+</body>
+</html>

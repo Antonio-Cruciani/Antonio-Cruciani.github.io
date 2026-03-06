@@ -1,0 +1,518 @@
+site:
+  title: Antonio Cruciani
+  description: Academic website of Antonio Cruciani
+  footer_text: © 2026 Antonio Cruciani
+  photo: photo.png
+  cv_url: antonio_cv.pdf
+  navigation:
+  - id: about
+    label: Bio
+  - id: publications
+    label: Publications
+  - id: talks
+    label: Talks
+  - id: projects
+    label: Projects
+  - id: cv
+    label: CV
+  - id: code
+    label: Code
+  - id: teaching
+    label: Teaching
+  - id: contact
+    label: Contacts
+profile:
+  name: Antonio Cruciani
+  role: Postdoctoral Researcher in Computer Science
+  affiliation: Aalto University
+  group:
+    name: Distributed Algorithms group
+    url: https://research.cs.aalto.fi/da/
+  bio:
+  - I am a postdoctoral researcher in Computer Science at Aalto University, working in Jukka Suomela's Distributed Algorithms group.
+  - I earned my PhD in Computer Science from Gran Sasso Science Institute (Italy), supervised by Francesco Pasquale and co-supervised by Pierluigi Crescenzi.
+  research_focus:
+  - Distributed Computing with emphasis on Dynamic Networks with Churn, Node-Capacitated Clique, and CONGEST.
+  - Approximation algorithms with emphasis on randomized algorithms for graph mining problems in static and temporal graphs.
+  news:
+  - date: February 2026
+    text: I will be visiting [[leonardo-pellegrina]] at the University of Padua!
+  - date: January 2026
+    text: One paper accepted at SIROCCO 2026, see you all in Durham!
+  - date: August 2025
+    text: One paper accepted at ICDM 2025, see you all in DC!
+  - date: August 2025
+    text: Three papers accepted at DISC 2025, see you all in Berlin!
+projects:
+  ongoing:
+  - title: 'Computation in Networks: Robust Foundations'
+    links:
+    - label: Project description
+      url: https://jukkasuomela.fi/robust-project/
+  - title: Dynamic Networks with Churn
+    collaborators:
+    - john-augustine
+    - thorsten-goette
+  - title: Efficient graph mining algorithms
+    collaborators:
+    - leonardo-pellegrina
+  - title: Computations on anonymus congested graphs
+    collaborators:
+    - john-augustine
+    - shay-kutten
+    - david-peleg
+    - manish-kumar
+  - title: Computations on anonymous P2P Networks
+    collaborators:
+    - francesco-pasquale
+  past:
+  - title: Bioinspired distributed protocols on dynamic networks
+    collaborators:
+    - john-augustine
+    - shay-kutten
+    - yuval-emek
+  - title: Fast Estimation of geometric centralities on very large graphs
+    collaborators:
+    - giambattista-amati
+    - paola-vocca
+    - simone-angelini
+    - daniele-pasquini
+  - title: Dynamic Networks with Churn
+    collaborators:
+    - john-augustine
+    - iqra-altaf-gillani
+  - title: Models, Generator and Graph Mining Algorithms for Time Dependent Graphs
+    collaborators:
+    - francesco-pasquale
+    - pierluigi-crescenzi
+  - title: Estimation of distance-based metrics for very large graphs with MinHash Signatures
+    links:
+    - label: Code
+      url: https://github.com/BigDataLaboratory/MHSE
+    collaborators:
+    - giambattista-amati
+    - paola-vocca
+    - simone-angelini
+    - daniele-pasquini
+  - title: Simple dynamic random graph models
+    links:
+    - label: Code
+      url: https://github.com/Antonio-Cruciani/dynamic-random-graph-generator
+    collaborators:
+    - francesco-pasquale
+  - title: Topic modeling by community detection algorithms
+    collaborators:
+    - giambattista-amati
+    - paola-vocca
+    - simone-angelini
+    - daniele-pasquini
+publications:
+  thesis:
+    title: Models and Algorithms for Temporal Betweenness Centrality and Dynamic Distributed Data Structures
+    pdf: other/phd_thesis/phd_thesis_antonio_cruciani_after_reviews.pdf
+    slides: presentations/thesis/phd_defense.html
+  conferences:
+    2026:
+    - title: Maintaining a Bounded Degree Expander in Dynamic Peer-to-Peer Networks
+      venue: SIROCCO 2026
+      status: To appear
+      authors:
+      - antonio-cruciani
+    - title: It does not matter how you define locally checkable labelings
+      authors:
+      - antonio-cruciani
+      - avinandan-das
+      - massimo-equi
+      - henrik-lievonen
+      - diep-luong-le
+      - augusto-modanese
+      - jukka-suomela
+      links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2602.18188
+    - title: Is a LOCAL algorithm computable?
+      authors:
+      - antonio-cruciani
+      - avinandan-das
+      - alesya-raevskaya
+      - jukka-suomela
+      links:
+      - label: arXiv
+        url: https://arxiv.org/pdf/2602.21022
+    2025:
+    - title: Fast Percolation Centrality Approximation with Importance Sampling
+      venue: ICDM 2025
+      authors:
+      - antonio-cruciani
+      - leonardo-pellegrina
+      links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2509.11454
+      - label: Video
+        url: https://www.youtube.com/watch?v=dGf3u5mVDmk
+      - label: Poster
+        url: other/posters/icdm_poster.pdf
+    - title: 'Brief Announcement: Maintaining Distributed Data Structures in Dynamic Peer-to-Peer Networks'
+      venue: DISC 2025
+      authors:
+      - john-augustine
+      - antonio-cruciani
+      - iqra-altaf-gillani
+      links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2409.10235
+      - label: Conference
+        url: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.DISC.2025.47
+    - title: 'Brief Announcement: Maintaining a Bounded Degree Expander in Dynamic Peer-to-Peer Networks'
+      venue: DISC 2025
+      authors:
+      - antonio-cruciani
+      links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2506.17757
+      - label: Conference
+        url: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.DISC.2025.53
+    - title: 'New Limits on Distributed Quantum Advantage: Dequantizing Linear Programs'
+      venue: DISC 2025
+      authors:
+      - alkida-balliu
+      - corinna-coupette
+      - antonio-cruciani
+      - francesco-d-amore
+      - massimo-equi
+      - henrik-lievonen
+      - augusto-modanese
+      - dennis-olivetti
+      - jukka-suomela
+      links:
+      - label: arXiv
+        url: https://www.arxiv.org/abs/2506.07574
+      - label: Conference
+        url: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.DISC.2025.11
+    2024:
+    - title: 'MANTRA: Temporal Betweenness Centrality Approximation through Sampling'
+      venue: ECML-PKDD 2024
+      authors:
+      - antonio-cruciani
+      links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2304.08356
+      - label: Conference
+        url: https://link.springer.com/chapter/10.1007/978-3-031-70341-6_8
+    2023:
+    - title: 'PROPAGATE: a seed propagation framework to compute Distance-based metrics on Very Large Graphs'
+      venue: ECML-PKDD 2023
+      authors:
+      - giambattista-amati
+      - antonio-cruciani
+      - daniele-pasquini
+      - paola-vocca
+      - simone-angelini
+      links:
+      - label: arXiv
+        url: https://arxiv.org/abs/2301.06499
+      - label: Conference
+        url: https://link.springer.com/chapter/10.1007/978-3-031-43418-1_40
+    - title: Proxying Betweenness Centrality Rankings in Temporal Networks
+      venue: SEA 2023
+      authors:
+      - ruben-becker
+      - pierluigi-crescenzi
+      - antonio-cruciani
+      - bojana-kodric
+      links:
+      - label: Conference
+        url: https://drops.dagstuhl.de/opus/frontdoor.php?source_opus=18356
+    - title: Dynamic graph models inspired by the Bitcoin network-formation process
+      venue: ICDCN 2023
+      authors:
+      - antonio-cruciani
+      - francesco-pasquale
+      links:
+      - label: Conference
+        url: https://dl.acm.org/doi/10.1145/3571306.3571398
+    2022:
+    - title: 'Dynamic graph models for the Bitcoin P2P network: simulation analysis for expansion and flooding time'
+      venue: SSS 2022
+      authors:
+      - antonio-cruciani
+      - francesco-pasquale
+      links:
+      - label: Conference
+        url: https://link.springer.com/chapter/10.1007/978-3-031-21017-4_23
+  workshops_and_posters:
+  - title: Maintaining Distributed Data Structures in Dynamic Peer-to-Peer Networks
+    event: IIT Madras 2024
+    links:
+    - label: Poster
+      url: other/posters/Poster_Dynamic_Data_Structures.pdf
+  - title: Topic modeling by community detection algorithms
+    event: OASIS 2021
+    authors:
+    - paola-vocca
+    - giambattista-amati
+    - simone-angelini
+    - antonio-cruciani
+    - gianmarco-fusco
+    - giancarlo-gaudino
+    - daniele-pasquini
+    links:
+    - label: Paper
+      url: https://www.researchgate.net/publication/354583025_Topic_modeling_by_community_detection_algorithms
+  - title: About Graph Index Compression Techniques
+    event: IIR 2019
+    authors:
+    - antonio-cruciani
+    - daniele-pasquini
+    - giambattista-amati
+    - paola-vocca
+    links:
+    - label: Paper
+      url: http://ceur-ws.org/Vol-2441/paper23.pdf
+  preprints:
+  - title: Fast Estimation of Percolation Centrality
+    authors:
+    - antonio-cruciani
+    links:
+    - label: arXiv
+      url: https://arxiv.org/abs/2408.02389
+cv:
+  full_cv_url: antonio_cv.pdf
+  education:
+  - degree: PhD in Computer Science
+    date: March 2025
+    institution: Gran Sasso Science Institute
+    institution_url: https://gssi.it
+    location: L'Aquila, Italy
+    thesis: Models and Algorithms for Temporal Betweenness Centrality and Dynamic Distributed Data Structures
+    thesis_url: other/phd_thesis/phd_thesis_antonio_cruciani_after_reviews.pdf
+    supervisors:
+    - francesco-pasquale
+    - pierluigi-crescenzi
+  - degree: MSc in Computer Science
+    date: February 2020
+    institution: University of Rome "Tor Vergata"
+    institution_url: http://www.informatica.uniroma2.it/index2.htm
+    location: Rome, Italy
+    thesis: Dynamic Random Graphs and unstructured P2P networks, analysis of two models inspired by the Bitcoin network.
+    supervisors:
+    - francesco-pasquale
+  - degree: BSc in Computer Science
+    date: October 2017
+    institution: University of Rome "Tor Vergata"
+    institution_url: http://www.informatica.uniroma2.it/index2.htm
+    location: Rome, Italy
+    thesis: Efficient Learning methods for playlist prediction
+    supervisors:
+    - giorgio-gambosi
+    supervisor_url: https://dblp.org/pid/14/5718
+talks:
+  '2025':
+  - title: Fast Percolation Centrality Approximation with Importance Sampling
+    event: ICDM 2025
+    event_url: https://www3.cs.stonybrook.edu/~icdm2025/index.html
+    slides_url: presentations/icdm_25/icdm_25.pdf
+  - title: Maintaining a Bounded Degree Expander in Dynamic Peer-to-Peer Networks
+    event: DISC 2025
+    event_url: https://www.disc-conference.org/wp/disc2025/
+    slides_url: presentations/disc_25/disc_expander_ba.pdf
+  - title: Highly Dynamic and Fully Distributed Data Structures
+    event: DISC 2025
+    event_url: https://www.disc-conference.org/wp/disc2025/
+    slides_url: presentations/disc_25/data_structure_ba.pdf
+  - title: Fast Percolation Centrality Approximation with Importance Sampling
+    event: Helsinki Theory Days 2025
+    event_url: https://algorithms.fi/theory-days-2025/
+    slides_url: presentations/theory_days_25/theory_days.pdf
+  '2024':
+  - title: Maintaining Distributed Data Structures in Dynamic Peer-to-Peer Networks
+    event: IIT Madras - Aalto University (online) 2024
+    slides_url: presentations/iitm_24_b/iitm_24_b.html
+  - title: On the Temporal Betweenness Centrality
+    event: IIT Madras 2024
+    slides_url: presentations/iitm_24_a/iitm_24_a.html
+  - title: 'MANTRA: Temporal Betweenness Centrality Approximation through Sampling'
+    event: ECML-PKDD 2024
+    event_url: https://ecmlpkdd.org/2024/
+    slides_url: presentations/ecml_pkdd_24/ecml_pkdd_24_presentation.pdf
+  - title: Computing Distance-based metrics on Very Large Graphs
+    event: University of Padua 2024
+    slides_url: presentations/ecml_pkdd_23/ecml_pkdd_23_presentation.html
+  '2023':
+  - title: 'PROPAGATE: a seed propagation framework to compute Distance-based metrics on Very Large Graphs'
+    event: ECML-PKDD 2023
+    event_url: https://2023.ecmlpkdd.org/
+    slides_url: presentations/ecml_pkdd_23/ecml_pkdd_23_presentation.html
+  - title: Proxying Betweenness Centrality Rankings in Temporal Networks
+    event: SEA 2023
+    event_url: https://myevent.upc.edu/92268/section/40805/sea-2023.html
+    slides_url: presentations/sea_23/sea_23_presentation.html
+  - title: Dynamic graph models inspired by the Bitcoin network-formation process
+    event: ICDCN 2023
+    event_url: https://cse.iitkgp.ac.in/conf/ICDCN23/
+    slides_url: presentations/icdcn_23/icdcn_23_presentation.html
+  '2022':
+  - title: 'Dynamic graph models for the Bitcoin P2P network: simulation analysis for expansion and flooding time'
+    event: SSS 2022
+    event_url: https://sss2022.limos.fr/
+    slides_url: presentations/sss_22/sss_presentation.odp
+code:
+- title: 'PercIS: Fast Percolation Centrality Approximation with Importance Sampling'
+  code_url: https://github.com/Antonio-Cruciani/PERCIS
+  description: PercIS is a sampling-based approximation algorithm based on importance sampling to approximate the percolation centrality of all nodes of a graph.
+- title: 'FEPiC: Fast Estimation of Percolation Centrality'
+  code_url: https://github.com/Antonio-Cruciani/percolation_centrality
+  description: FEPiC is a progressive sampling algorithm for approximating doubly normalized percolation centrality, using Monte Carlo Empirical Rademacher Averages and variance-aware bounds. The implementation includes progressive, fixed-sample, and exact variants.
+  extra_links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2408.02389
+- title: 'MANTRA: Temporal Betweenness Centrality Approximation through Sampling'
+  code_url: https://github.com/Antonio-Cruciani/MANTRA
+  description: MANTRA is a progressive sampling algorithm for temporal betweenness centrality in temporal graphs. The library also includes algorithms for temporal edge centrality, temporal diameter, average path length, and connectivity rate.
+  extra_links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2304.08356
+- title: 'PROPAGATE: a seed propagation framework to compute Distance-based metrics on Very Large Graphs'
+  code_url: https://github.com/BigDataLaboratory/MHSE
+  description: PROPAGATE is a sampling-based algorithm to approximate distance-based metrics such as diameter, effective diameter, average distance, reachable pairs, connectivity rate, and geometric centralities.
+  extra_links:
+  - label: arXiv
+    url: https://arxiv.org/abs/2301.06499
+- title: 'TSBProxy: Temporal Shortest Betweenness Proxy'
+  code_url: https://github.com/Antonio-Cruciani/TSBProxy
+  description: TSBProxy is a suite of proxies for temporal shortest betweenness centrality, including Julia implementations of shortest and prefix foremost betweenness, ONBRA, and a novel temporal degree proxy.
+- title: 'DREG: Dynamic Random Expander Generator'
+  code_url: https://github.com/Antonio-Cruciani/DREG-DynamicRandomExpanderGenerator/tree/master
+  description: DREG is a Python implementation of a generator for almost regular dynamic random graphs that are expanders at each time step with high probability.
+teaching:
+- period: '2025'
+  items:
+  - 'Course: CS-E4565 - Combinatorics of Computation D.'
+  - 'Teaching Assistant, covering the first two weeks: Introduction to probability, the probabilistic method and derandomization.'
+  - 'Professor: Jara Uitto'
+  - 'Institute: Aalto University'
+  links:
+  - label: First lesson
+    url: other/lectures/CS-E4565/first_lesson.pdf
+  - label: Second lesson
+    url: other/lectures/CS-E4565/second_lesson.pdf
+  - label: Third lesson
+    url: other/lectures/CS-E4565/third_lesson.pdf
+  - label: Fourth lesson
+    url: other/lectures/CS-E4565/fourth_lesson.pdf
+- period: Academic Year 2018-2019 (Italian)
+  items:
+  - Theoretical Computer science - Exercise sessions.
+  - 'Institute: University of Rome "Tor Vergata"'
+  links:
+  - label: Exercises
+    url: https://github.com/Antonio-Cruciani/Esercitazioni-Informatica-Teorica
+- period: Academic Year 2017-2018 (Italian)
+  items:
+  - Computer Programming - Exercise sessions.
+  - 'Institute: University of Rome "Tor Vergata"'
+contact:
+  primary_email: antonio.cruciani AT aalto.fi
+  secondary_email: antonio.cruciani AT gssi.it
+  pgp_url: antonio_cruciani.asc
+  address_lines:
+  - Computer Science
+  - Aalto University
+  - Tietotekniikantalo, Konemiehentie 2, room number B313
+  - Espoo
+  - Finland
+  links:
+  - label: dblp
+    url: https://dblp.org/pid/249/5159
+  - label: GitHub
+    url: https://github.com/Antonio-Cruciani
+  - label: LinkedIn
+    url: https://linkedin.com/in/antonio-cruciani-9b7b7083
+people:
+  antonio-cruciani:
+    name: Antonio Cruciani
+  john-augustine:
+    name: John Augustine
+    url: http://www.cse.iitm.ac.in/~augustine/
+  thorsten-goette:
+    name: Thorsten Götte
+    url: https://scholar.google.com/citations?user=_Hrr2XgAAAAJ&hl=en
+  leonardo-pellegrina:
+    name: Leonardo Pellegrina
+    url: http://www.dei.unipd.it/~pellegri/
+  shay-kutten:
+    name: Shay Kutten
+    url: https://dds.technion.ac.il/academicstaff/shay-kutten/
+  david-peleg:
+    name: David Peleg
+    url: https://www.weizmann.ac.il/math/peleg/
+  manish-kumar:
+    name: Manish Kumar
+    url: https://sites.google.com/view/saumitr/home
+  francesco-pasquale:
+    name: Francesco Pasquale
+    url: https://www.mat.uniroma2.it/~pasquale/
+  iqra-altaf-gillani:
+    name: Iqra Altaf Gillani
+    url: https://sites.google.com/nitsri.net/iqraaltaf
+  yuval-emek:
+    name: Yuval Emek
+    url: https://yemek.net.technion.ac.il/
+  giambattista-amati:
+    name: Giambattista Amati
+    url: https://dblp.org/pid/a/GianniAmati
+  paola-vocca:
+    name: Paola Vocca
+    url: https://dblp.org/pid/58/5877
+  simone-angelini:
+    name: Simone Angelini
+    url: https://www.linkedin.com/in/simone-angelini/
+  daniele-pasquini:
+    name: Daniele Pasquini
+    url: https://www.linkedin.com/in/dpasquini/
+  pierluigi-crescenzi:
+    name: Pierluigi Crescenzi
+    url: https://www.pilucrescenzi.it/wp/piluc/
+  avinandan-das:
+    name: Avinandan Das
+    url: https://sites.google.com/view/avinandan/home
+  massimo-equi:
+    name: Massimo Equi
+    url: https://massimoequi.github.io/
+  henrik-lievonen:
+    name: Henrik Lievonen
+    url: https://henriklievonen.fi/
+  diep-luong-le:
+    name: Diep Luong-Le
+  augusto-modanese:
+    name: Augusto Modanese
+    url: https://augusto.modanese.net/
+  jukka-suomela:
+    name: Jukka Suomela
+    url: https://jukkasuomela.fi/
+  alesya-raevskaya:
+    name: Alesya Raevskaya
+  alkida-balliu:
+    name: Alkida Balliu
+    url: https://alkida.net/
+  corinna-coupette:
+    name: Corinna Coupette
+    url: https://www.coupette.io/
+  francesco-d-amore:
+    name: Francesco d'Amore
+    url: https://fdamore95.github.io/
+  dennis-olivetti:
+    name: Dennis Olivetti
+    url: https://olidennis.github.io/
+  ruben-becker:
+    name: Ruben Becker
+    url: https://rbnbckr.github.io/
+  bojana-kodric:
+    name: Bojana Kodric
+  gianmarco-fusco:
+    name: Gianmarco Fusco
+  giancarlo-gaudino:
+    name: Giancarlo Gaudino
+  giorgio-gambosi:
+    name: Giorgio Gambosi
+    url: https://dblp.org/pid/14/5718
