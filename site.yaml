@@ -35,6 +35,8 @@ profile:
   - Distributed Computing with emphasis on Dynamic Networks with Churn, Node-Capacitated Clique, and CONGEST.
   - Approximation algorithms with emphasis on randomized algorithms for graph mining problems in static and temporal graphs.
   news:
+  - date: March 2026
+    text: PC member, SSS 2026.
   - date: February 2026
     text: I will be visiting [[leonardo-pellegrina]] at the University of Padua!
   - date: January 2026
@@ -122,10 +124,7 @@ publications:
       authors:
       - antonio-cruciani
       - avinandan-das
-      - massimo-equi
-      - henrik-lievonen
-      - diep-luong-le
-      - augusto-modanese
+      - alesya-raevskaya
       - jukka-suomela
       links:
       - label: arXiv
@@ -134,7 +133,10 @@ publications:
       authors:
       - antonio-cruciani
       - avinandan-das
-      - alesya-raevskaya
+      - massimo-equi
+      - henrik-lievonen
+      - diep-luong-le
+      - augusto-modanese
       - jukka-suomela
       links:
       - label: arXiv
