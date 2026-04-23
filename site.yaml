@@ -389,6 +389,12 @@ code:
   code_url: https://github.com/Antonio-Cruciani/DREG-DynamicRandomExpanderGenerator/tree/master
   description: DREG is a Python implementation of a generator for almost regular dynamic random graphs that are expanders at each time step with high probability.
 teaching:
+- period: '2026'
+  items:
+    - 'Course: CS-E4565 - Combinatorics of Computation D'
+    - 'Teaching Assistant, covering the: The probabilistic method and Expander graphs.'
+    - 'Professor: Jara Uitto'
+    - 'Institute: Aalto University'
 - period: '2025'
   items:
   - 'Course: CS-E4565 - Combinatorics of Computation D.'
