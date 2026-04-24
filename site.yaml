@@ -395,6 +395,17 @@ teaching:
     - 'Teaching Assistant, covering the: The probabilistic method and Expander graphs.'
     - 'Professor: Jara Uitto'
     - 'Institute: Aalto University'
+  links: 
+    - label: Lecture Notes 1
+      url: other/lectures/CS-E4565_26/Notes-1.pdf
+    - label: Lecture Notes 2
+      url: other/lectures/CS-E4565_26/Notes-2.pdf
+    - label: Lecture Notes 3
+      url: other/lectures/CS-E4565_26/Notes-3.pdf
+    - label: Slides Lovász Local Lemma
+      url: other/lectures/CS-E4565_26/LovaszLocalLemma-Slides.pdf
+    - label: Lecture Notes 4
+      url: other/lectures/CS-E4565_26/Notes-4.pdf
 - period: '2025'
   items:
   - 'Course: CS-E4565 - Combinatorics of Computation D.'
