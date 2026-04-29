@@ -35,6 +35,8 @@ profile:
   - Distributed Computing with emphasis on Dynamic Networks with Churn, Node-Capacitated Clique, and CONGEST.
   - Approximation algorithms with emphasis on randomized algorithms for graph mining problems in static and temporal graphs.
   news:
+  - date: April 2026
+    text: Two papers accepted as BA at PODC 2026!
   - date: March 2026
     text: PC member, SSS 2026.
   - date: February 2026
@@ -121,6 +123,8 @@ publications:
       authors:
       - antonio-cruciani
     - title: It does not matter how you define locally checkable labelings
+      venue: PODC 2026
+      status: To appear as BA
       authors:
       - antonio-cruciani
       - avinandan-das
@@ -130,6 +134,8 @@ publications:
       - label: arXiv
         url: https://arxiv.org/abs/2602.18188
     - title: Is a LOCAL algorithm computable?
+      venue: PODC 2026
+      status: To appear as BA
       authors:
       - antonio-cruciani
       - avinandan-das
