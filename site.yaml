@@ -412,6 +412,10 @@ teaching:
       url: other/lectures/CS-E4565_26/LovaszLocalLemma-Slides.pdf
     - label: Lecture Notes 4
       url: other/lectures/CS-E4565_26/Notes-4.pdf
+    - label: Lecture Notes 5 
+      url: other/lectures/CS-E4565_26/Notes-5.pdf
+    - label: Lecture Notes 6 
+      url: other/lectures/CS-E4565_26/Notes-6.pdf
 - period: '2025'
   items:
   - 'Course: CS-E4565 - Combinatorics of Computation D.'
