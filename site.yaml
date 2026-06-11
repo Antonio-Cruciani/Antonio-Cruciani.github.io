@@ -319,6 +319,11 @@ cv:
     - giorgio-gambosi
     supervisor_url: https://dblp.org/pid/14/5718
 talks:
+  '2026':
+    - title: Maintaining a Bounded Degree Expander in Dynamic Peer-to-Peer Networks
+      event: SIROCCO 2026
+      event_url:  https://sirocco2026.webspace.durham.ac.uk/
+      slides_url: presentations/sirocco_26/sirocco_26.pdf
   '2025':
   - title: Fast Percolation Centrality Approximation with Importance Sampling
     event: ICDM 2025
