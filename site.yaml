@@ -31,10 +31,14 @@ profile:
   bio:
   - I am a postdoctoral researcher in Computer Science at Aalto University, working in Jukka Suomela's Distributed Algorithms group.
   - I earned my PhD in Computer Science from Gran Sasso Science Institute (Italy), supervised by Francesco Pasquale and co-supervised by Pierluigi Crescenzi.
+  - My research studies robustness in network algorithms, with a focus on randomized methods for dynamic and evolving networks. I am interested in both distributed protocols that remain reliable under churn and adversarial changes, and sampling algorithms for graph analysis that adapt to the structure of the input instance to improve accuracy and reduce variance.
+
   research_focus:
   - Distributed Computing with emphasis on Dynamic Networks with Churn, Node-Capacitated Clique, and CONGEST.
   - Approximation algorithms with emphasis on randomized algorithms for graph mining problems in static and temporal graphs.
   news:
+  - date: July 2026
+    text: PC member, OPODIS 2027.
   - date: June 2026
     text: PC member, ICDCN 2027.
   - date: April 2026
@@ -43,12 +47,6 @@ profile:
     text: PC member, SSS 2026.
   - date: February 2026
     text: I will be visiting [[leonardo-pellegrina]] at the University of Padua!
-  - date: January 2026
-    text: One paper accepted at SIROCCO 2026, see you all in Durham!
-  - date: August 2025
-    text: One paper accepted at ICDM 2025, see you all in DC!
-  - date: August 2025
-    text: Three papers accepted at DISC 2025, see you all in Berlin!
 projects:
   ongoing:
   - title: 'Computation in Networks: Robust Foundations'
@@ -128,7 +126,7 @@ publications:
         url: https://link.springer.com/chapter/10.1007/978-3-032-26465-7_11
     - title: It does not matter how you define locally checkable labelings
       venue: PODC 2026
-      status: To appear as BA
+      status: Brief Announcement
       authors:
       - antonio-cruciani
       - avinandan-das
@@ -137,9 +135,11 @@ publications:
       links:
       - label: arXiv
         url: https://arxiv.org/abs/2602.18188
+      - label: Conference
+        url: https://dl.acm.org/doi/10.1145/3796701.3815923
     - title: Is a LOCAL algorithm computable?
       venue: PODC 2026
-      status: To appear as BA
+      status: Brief Announcement
       authors:
       - antonio-cruciani
       - avinandan-das
@@ -151,6 +151,8 @@ publications:
       links:
       - label: arXiv
         url: https://arxiv.org/pdf/2602.21022
+      - label: Conference
+        url: https://dl.acm.org/doi/10.1145/3796701.3815908
     2025:
     - title: Fast Percolation Centrality Approximation with Importance Sampling
       venue: ICDM 2025
@@ -166,8 +168,9 @@ publications:
         url: https://www.youtube.com/watch?v=dGf3u5mVDmk
       - label: Poster
         url: other/posters/icdm_poster.pdf
-    - title: 'Brief Announcement: Maintaining Distributed Data Structures in Dynamic Peer-to-Peer Networks'
+    - title: 'Maintaining Distributed Data Structures in Dynamic Peer-to-Peer Networks'
       venue: DISC 2025
+      status: Brief Announcement
       authors:
       - john-augustine
       - antonio-cruciani
@@ -177,8 +180,9 @@ publications:
         url: https://arxiv.org/abs/2409.10235
       - label: Conference
         url: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.DISC.2025.47
-    - title: 'Brief Announcement: Maintaining a Bounded Degree Expander in Dynamic Peer-to-Peer Networks'
+    - title: 'Maintaining a Bounded Degree Expander in Dynamic Peer-to-Peer Networks'
       venue: DISC 2025
+      status: Brief Announcement
       authors:
       - antonio-cruciani
       links:
@@ -248,6 +252,7 @@ publications:
     2022:
     - title: 'Dynamic graph models for the Bitcoin P2P network: simulation analysis for expansion and flooding time'
       venue: SSS 2022
+      status: Brief Announcement
       authors:
       - antonio-cruciani
       - francesco-pasquale
