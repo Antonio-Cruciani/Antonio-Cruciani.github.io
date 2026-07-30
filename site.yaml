@@ -34,8 +34,8 @@ profile:
   - My research studies robustness in network algorithms, with a focus on randomized methods for dynamic and evolving networks. I am interested in both distributed protocols that remain reliable under churn and adversarial changes, and sampling algorithms for graph analysis that adapt to the structure of the input instance to improve accuracy and reduce variance.
 
   research_focus:
-  - Distributed Computing with emphasis on Dynamic Networks with Churn, Node-Capacitated Clique, and CONGEST.
-  - Approximation algorithms with emphasis on randomized algorithms for graph mining problems in static and temporal graphs.
+  - Distributed computing, with emphasis on robust algorithms for dynamic networks, networks under churn, and resource-constrained communication models.
+  - Randomized and approximation algorithms for large-scale graph mining, with emphasis on sampling, importance sampling, centrality measures, and temporal graphs.
   news:
   - date: July 2026
     text: PC member, OPODIS 2026.
