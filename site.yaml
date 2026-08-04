@@ -37,6 +37,8 @@ profile:
   - Distributed computing, with emphasis on robust algorithms for dynamic networks, networks under churn, and resource-constrained communication models.
   - Randomized and approximation algorithms for large-scale graph mining, with emphasis on sampling, importance sampling, centrality measures, and temporal graphs.
   news:
+  - date: August 2026
+    text: Two papers accepted at DISC 2026, see you in Rome!
   - date: July 2026
     text: PC member, OPODIS 2026.
   - date: June 2026
@@ -45,8 +47,6 @@ profile:
     text: Two papers accepted as BA at PODC 2026!
   - date: March 2026
     text: PC member, SSS 2026.
-  - date: February 2026
-    text: I will be visiting [[leonardo-pellegrina]] at the University of Padua!
 projects:
   ongoing:
   - title: 'Computation in Networks: Robust Foundations'
@@ -125,8 +125,8 @@ publications:
       - label: Conference
         url: https://link.springer.com/chapter/10.1007/978-3-032-26465-7_11
     - title: It does not matter how you define locally checkable labelings
-      venue: PODC 2026
-      status: Brief Announcement
+      venue: PODC 2026 (BA); DISC 2026
+      status: To Appear
       authors:
       - antonio-cruciani
       - avinandan-das
@@ -138,8 +138,8 @@ publications:
       - label: Conference
         url: https://dl.acm.org/doi/10.1145/3796701.3815923
     - title: Is a LOCAL algorithm computable?
-      venue: PODC 2026
-      status: Brief Announcement
+      venue: PODC 2026 (BA); DISC 2026
+      status: To Appear
       authors:
       - antonio-cruciani
       - avinandan-das
