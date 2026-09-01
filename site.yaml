@@ -117,6 +117,17 @@ publications:
     slides: presentations/thesis/phd_defense.html
   conferences:
     2026:
+
+    - title: How Bitcoin Forms Its Network Peer-Table Sampling and Structural Properties
+      venue: SSS 2026
+      status: To Appear
+      authors: 
+        - mohamed-taki-eddine-abedesselam
+        - antonio-cruciani
+        - fabio-giacomelli
+        - lucianna-kiffer
+        - francesco-pasquale
+
     - title: Maintaining a Bounded Degree Expander in Dynamic Peer-to-Peer Networks
       venue: SIROCCO 2026
       authors:
@@ -562,3 +573,12 @@ people:
   giorgio-gambosi:
     name: Giorgio Gambosi
     url: https://dblp.org/pid/14/5718
+  mohamed-taki-eddine-abedesselam:
+    name: Mohamed Taki Eddine Abedesselam
+    url: https://taki-abedesselam.github.io/
+  fabio-giacomelli:
+    name: Fabio Giacomelli
+    url: https://fabio-giacomelli.github.io/
+  lucianna-kiffer:
+    name: Lucianna Kiffer
+    url: https://luciannakiffer.com/
