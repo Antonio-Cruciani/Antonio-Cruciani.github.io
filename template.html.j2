@@ -160,7 +160,7 @@
       <button class="menu-toggle" type="button">Menu</button>
       <ul>
         {% for item in navigation %}
-          <li><a href="#{{ item.id }}">{{ item.label }}</a></li>
+          <li><a href="{{ item.href }}">{{ item.label }}</a></li>
         {% endfor %}
       </ul>
     </div>

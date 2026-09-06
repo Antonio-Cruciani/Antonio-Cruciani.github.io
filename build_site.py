@@ -345,20 +345,29 @@ def normalize_contact(contact: Any) -> list[dict[str, Any]]:
 def normalize_navigation(site: dict[str, Any]) -> list[dict[str, str]]:
     nav = [x for x in as_list(site.get("navigation")) if isinstance(x, dict)]
     if nav:
-        return [
-            {"id": str(item.get("id", "")).strip(), "label": str(item.get("label", item.get("id", ""))).strip()}
-            for item in nav
-            if str(item.get("id", "")).strip()
-        ]
+        normalized: list[dict[str, str]] = []
+        for item in nav:
+            item_id = str(item.get("id", "")).strip()
+            item_url = str(item.get("url", "")).strip()
+            if not item_id and not item_url:
+                continue
+            normalized.append(
+                {
+                    "id": item_id,
+                    "label": str(item.get("label", item_id or item_url)).strip(),
+                    "href": item_url or f"#{item_id}",
+                }
+            )
+        return normalized
     return [
-        {"id": "about", "label": "Bio"},
-        {"id": "publications", "label": "Publications"},
-        {"id": "talks", "label": "Talks"},
-        {"id": "projects", "label": "Projects"},
-        {"id": "cv", "label": "CV"},
-        {"id": "code", "label": "Code"},
-        {"id": "teaching", "label": "Teaching"},
-        {"id": "contact", "label": "Contacts"},
+        {"id": "about", "label": "Bio", "href": "#about"},
+        {"id": "publications", "label": "Publications", "href": "#publications"},
+        {"id": "talks", "label": "Talks", "href": "#talks"},
+        {"id": "projects", "label": "Projects", "href": "#projects"},
+        {"id": "cv", "label": "CV", "href": "#cv"},
+        {"id": "code", "label": "Code", "href": "#code"},
+        {"id": "teaching", "label": "Teaching", "href": "#teaching"},
+        {"id": "contact", "label": "Contacts", "href": "#contact"},
     ]
 
 

@@ -19,6 +19,8 @@ site:
     label: Code
   - id: teaching
     label: Teaching
+  - label: Blog
+    url: blog/index.html
   - id: contact
     label: Contacts
 profile:
