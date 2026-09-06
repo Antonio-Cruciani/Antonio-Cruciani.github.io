@@ -424,7 +424,7 @@ teaching:
 - period: '2026'
   items:
     - 'Course: CS-E4565 - Combinatorics of Computation D'
-    - 'Teaching Assistant, covering the: The probabilistic method and Expander graphs.'
+    - 'Teaching: The probabilistic method and Expander graphs.'
     - 'Professor: Jara Uitto'
     - 'Institute: Aalto University'
   links: 
@@ -445,7 +445,7 @@ teaching:
 - period: '2025'
   items:
   - 'Course: CS-E4565 - Combinatorics of Computation D.'
-  - 'Teaching Assistant, covering the first two weeks: Introduction to probability, the probabilistic method and derandomization.'
+  - 'Teaching: Introduction to probability, the probabilistic method and derandomization.'
   - 'Professor: Jara Uitto'
   - 'Institute: Aalto University'
   links:
