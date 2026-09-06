@@ -37,6 +37,8 @@ profile:
   - Distributed computing, with emphasis on robust algorithms for dynamic networks, networks under churn, and resource-constrained communication models.
   - Randomized and approximation algorithms for large-scale graph mining, with emphasis on sampling, importance sampling, centrality measures, and temporal graphs.
   news:
+  - date: September 2026
+    text: One paper accepted at SSS 2026!
   - date: August 2026
     text: Two papers accepted at DISC 2026, see you in Rome!
   - date: July 2026
@@ -45,8 +47,7 @@ profile:
     text: PC member, ICDCN 2027.
   - date: April 2026
     text: Two papers accepted as BA at PODC 2026!
-  - date: March 2026
-    text: PC member, SSS 2026.
+    
 projects:
   ongoing:
   - title: 'Computation in Networks: Robust Foundations'
@@ -118,7 +119,7 @@ publications:
   conferences:
     2026:
 
-    - title: How Bitcoin Forms Its Network Peer-Table Sampling and Structural Properties
+    - title: "How Bitcoin Forms Its Network: Peer-Table Sampling and Structural Properties"
       venue: SSS 2026
       status: To Appear
       authors: 
@@ -507,7 +508,7 @@ people:
     url: https://sites.google.com/view/saumitr/home
   francesco-pasquale:
     name: Francesco Pasquale
-    url: https://www.mat.uniroma2.it/~pasquale/
+    url: https://francescopasquale.it/
   iqra-altaf-gillani:
     name: Iqra Altaf Gillani
     url: https://sites.google.com/nitsri.net/iqraaltaf
@@ -528,7 +529,7 @@ people:
     url: https://www.linkedin.com/in/dpasquini/
   pierluigi-crescenzi:
     name: Pierluigi Crescenzi
-    url: https://www.pilucrescenzi.it/wp/piluc/
+    url: https://scholar.google.com/citations?user=AXhF-boAAAAJ&hl=en
   avinandan-das:
     name: Avinandan Das
     url: https://sites.google.com/view/avinandan/home
