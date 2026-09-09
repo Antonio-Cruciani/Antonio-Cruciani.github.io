@@ -130,6 +130,9 @@ publications:
         - fabio-giacomelli
         - lucianna-kiffer
         - francesco-pasquale
+      links:
+        - label: arXiv
+          url: https://arxiv.org/abs/2609.07609
 
     - title: Maintaining a Bounded Degree Expander in Dynamic Peer-to-Peer Networks
       venue: SIROCCO 2026
