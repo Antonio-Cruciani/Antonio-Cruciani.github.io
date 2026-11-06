@@ -143,7 +143,6 @@ publications:
         url: https://link.springer.com/chapter/10.1007/978-3-032-26465-7_11
     - title: It does not matter how you define locally checkable labelings
       venue: PODC 2026 (BA); DISC 2026
-      status: To Appear
       authors:
       - antonio-cruciani
       - avinandan-das
@@ -153,10 +152,9 @@ publications:
       - label: arXiv
         url: https://arxiv.org/abs/2602.18188
       - label: Conference
-        url: https://dl.acm.org/doi/10.1145/3796701.3815923
+        url: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.DISC.2026.10
     - title: Is a LOCAL algorithm computable?
       venue: PODC 2026 (BA); DISC 2026
-      status: To Appear
       authors:
       - antonio-cruciani
       - avinandan-das
@@ -169,7 +167,7 @@ publications:
       - label: arXiv
         url: https://arxiv.org/pdf/2602.21022
       - label: Conference
-        url: https://dl.acm.org/doi/10.1145/3796701.3815908
+        url: https://drops.dagstuhl.de/entities/document/10.4230/LIPIcs.DISC.2026.14
     2025:
     - title: Fast Percolation Centrality Approximation with Importance Sampling
       venue: ICDM 2025
@@ -475,8 +473,6 @@ teaching:
   - 'Institute: University of Rome "Tor Vergata"'
 contact:
   primary_email: antonio.cruciani AT aalto.fi
-  secondary_email: antonio.cruciani AT gssi.it
-  pgp_url: antonio_cruciani.asc
   address_lines:
   - Computer Science
   - Aalto University
